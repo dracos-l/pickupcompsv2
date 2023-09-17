@@ -20,7 +20,7 @@ function MainPage() {
       <main>
         <section id="about">
           <h2>About Us</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
+          <p>Lets get this shit. Lets get this shit. Lets get this shit. Lets get this shit. </p>
         </section>
 
         <section id="services">
