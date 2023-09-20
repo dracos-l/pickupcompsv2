@@ -19,7 +19,6 @@ body {
 }
 
 
-
 // Header
 header {
   background-color: $primary-color;
@@ -58,6 +57,9 @@ nav {
         }
       }
     }
+  }
+  #basic-nav-dropdown{
+    color-scheme: $secondary-color;
   }
 }
 

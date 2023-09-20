@@ -44,6 +44,9 @@ nav ul li a {
 nav ul li a:hover {
   color: #e74c3c;
 }
+nav #basic-nav-dropdown {
+  color-scheme: #e74c3c;
+}
 
 main {
   padding: 20px;
