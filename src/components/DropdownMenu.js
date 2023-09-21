@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import AboutProjContent from './AboutProjContent';
+import AboutUsContent from './AboutUsContent';
+import ContactContent from './ContactContent';
 
 const DropdownMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,16 +33,44 @@ const DropdownMenu = () => {
             </button>
             {isOpen && (
                 <ul class="dropdown-menu">
-                    <li onClick={() => handleItemClick('Contact')}>Contact Us</li>
                     <li onClick={() => handleItemClick('AboutUs')}>About Us</li>
                     <li onClick={() => handleItemClick('AboutProj')}>About the Project</li>
+                    <li onClick={() => handleItemClick('Contact')}>Contact Us</li>
                 </ul>
             )}
             </div>
             {isPopupOpen && (
                 <div class="popup">
-                        <h3>Custom Popup Text for {selectedItem}</h3>
-                        <button onClick={closePopup}>Close</button>
+                        <div className="popup-content">
+                            <h3>
+                                Custom Popup Text for {selectedItem}
+                            </h3>
+                            {/* Add your content here */}
+                            {/* You can place your content inside a div with a max-height and overflow-y for scrolling */}
+                            
+                            <div className="scrollable-content">
+                                
+                            {selectedItem === 'AboutProj' && (
+                                <div class="aboutProj">
+                                    <AboutProjContent />
+                                </div>
+                            )}
+
+                            {selectedItem === 'AboutUs' && (
+                                <div class="aboutUs">
+                                    <AboutUsContent />
+                                </div>
+                            )}
+
+                            {selectedItem === 'Contact' && (
+                                <div class="contact">
+                                    <ContactContent />
+                                </div>
+                            )}
+                            </div>
+
+                            <button onClick={closePopup}>Close</button>
+                        </div>
                 </div>
             )}
         </div>

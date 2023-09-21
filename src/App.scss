@@ -1,5 +1,5 @@
 // Variables
-$primary-color: #3498db;
+$primary-color: #0e476e;
 $secondary-color: #e74c3c;
 $basically-white: #ddd;
 $basically-black: #333;
@@ -90,7 +90,7 @@ nav {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     right: 0;
-    top: 20px;
+    top: 29px;
     z-index: 1;
 
     li {
@@ -139,6 +139,18 @@ nav {
   flex-direction: column; /* Stack children vertically */
   justify-content: flex-end; /* Center children at the bottom */
 
+  .popup-content {
+    max-height: 80vh; /* Adjust the max height as needed */
+    overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  
+    /* Additional styling for the popup content */
+  }
+  
+  .scrollable-content {
+    /* Optional styling for the scrollable content */
+    /* You can customize this to match your design */
+  }
+
 
   h3 {
     font-size: 16px; /* Font size for the heading */
@@ -172,6 +184,20 @@ nav {
 // Main content
 main {
   padding: 20px;
+}
+
+.aba{
+  //size and placement centered
+  width: 10%;
+  margin: 0 auto;
+  //border
+  border-radius: 10px;
+  border: 2px solid $basically-black;
+  box-shadow: 0 0 50px 0 rgba(0,0,0,0.5);
+  //padding
+  padding: 20px;
+  //background
+  background-color: $basically-white;
 }
 
 // Footer
