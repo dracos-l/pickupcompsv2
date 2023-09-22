@@ -43,7 +43,23 @@ const DropdownMenu = () => {
                 <div class="popup">
                         <div className="popup-content">
                             <h3>
-                                Custom Popup Text for {selectedItem}
+                            {selectedItem === 'AboutProj' && (
+                                <div>
+                                    About the Project
+                                </div>
+                            )}
+
+                            {selectedItem === 'AboutUs' && (
+                                <div>
+                                    About Us
+                                </div>
+                            )}
+
+                            {selectedItem === 'Contact' && (
+                                <div>
+                                    Contact Us
+                                </div>
+                            )}
                             </h3>
                             {/* Add your content here */}
                             {/* You can place your content inside a div with a max-height and overflow-y for scrolling */}

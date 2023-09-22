@@ -23,7 +23,7 @@ function MainPage() {
 
       {/* Footer Section */}
       <footer>
-        <p>&copy; {new Date().getFullYear()} Your Website Name</p>
+        <p>&copy; {new Date().getFullYear()} My dick</p>
       </footer>
     </div>
   );

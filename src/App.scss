@@ -93,6 +93,7 @@ nav {
     top: 29px;
     z-index: 1;
 
+
     li {
       text-align: center;
       border: 0px solid #ddd;
@@ -123,10 +124,10 @@ nav {
 .popup{
   position: fixed;
   width: 60%;
-  height: 60%;
-  top: 20%;
+  height: 75%;
+  top: 10%;
   left: 20%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   z-index: 1;
 
   padding: 20px; /* Padding inside the popup box */
@@ -145,16 +146,19 @@ nav {
   
     /* Additional styling for the popup content */
   }
-  
+
   .scrollable-content {
     /* Optional styling for the scrollable content */
     /* You can customize this to match your design */
+    font-size: 60px;
+    color: $basically-white;
   }
 
-
   h3 {
-    font-size: 16px; /* Font size for the heading */
+    font-size: 36px; /* Font size for the heading */
     margin-bottom: 10px; /* Spacing below the heading */
+    color: $basically-white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
   }
 
   button{
@@ -170,8 +174,8 @@ nav {
     border-radius: 10px;
     margin-top: 20px;
     //size
-    width: 100px;
-    height: 50px;
+    width: 80px;
+    height: 40px;
     //use flex to position center of the bottom of the container
     align-self: center;
   }
@@ -180,6 +184,9 @@ nav {
     background-color: #0056b3; /* Button background color on hover */
   }
 }
+
+
+
 
 // Main content
 main {

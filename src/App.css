@@ -95,10 +95,10 @@ nav ul li a:hover {
 .popup {
   position: fixed;
   width: 60%;
-  height: 60%;
-  top: 20%;
+  height: 75%;
+  top: 10%;
   left: 20%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
   padding: 20px; /* Padding inside the popup box */
   margin: 0 auto; /* Center the popup box horizontally */
@@ -117,10 +117,14 @@ nav ul li a:hover {
 .popup .scrollable-content {
   /* Optional styling for the scrollable content */
   /* You can customize this to match your design */
+  font-size: 60px;
+  color: #ddd;
 }
 .popup h3 {
-  font-size: 16px; /* Font size for the heading */
+  font-size: 36px; /* Font size for the heading */
   margin-bottom: 10px; /* Spacing below the heading */
+  color: #ddd;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 .popup button {
   background-color: #0e476e;
@@ -132,8 +136,8 @@ nav ul li a:hover {
   padding: 10px 20px;
   border-radius: 10px;
   margin-top: 20px;
-  width: 100px;
-  height: 50px;
+  width: 80px;
+  height: 40px;
   align-self: center;
 }
 .popup button:hover {
