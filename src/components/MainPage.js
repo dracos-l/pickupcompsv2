@@ -21,6 +21,7 @@ function MainPage() {
         </section>
       </main>
 
+
       {/* Footer Section */}
       <footer>
         <p>&copy; {new Date().getFullYear()} My dick</p>

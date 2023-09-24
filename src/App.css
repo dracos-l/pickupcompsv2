@@ -98,7 +98,7 @@ nav ul li a:hover {
   height: 75%;
   top: 10%;
   left: 20%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 1;
   padding: 20px; /* Padding inside the popup box */
   margin: 0 auto; /* Center the popup box horizontally */
