@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const Header = () => {
+  const isPopupOpen = true;
   return (
 
     <header>
@@ -19,7 +20,7 @@ const Header = () => {
       </Link>
       <nav>
         <div class="DropdownMenuComp">
-          <DropdownMenu />
+          <DropdownMenu x={isPopupOpen}/>
         </div>
         <Link to="/AboutProjContent">
           <div class="AboutProjButton">About Project</div>
