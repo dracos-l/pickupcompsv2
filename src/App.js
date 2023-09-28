@@ -11,11 +11,9 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-      </div>
-      <div>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/AboutProj" element={<AboutProjContent />} />
+          <Route path="/AboutProjContent" element={<AboutProjContent />} />
           <Route path="/EasterEgg" element={<EasterEgg/>} />
         </Routes>
       </div>

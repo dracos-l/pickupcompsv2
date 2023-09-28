@@ -1,16 +1,16 @@
 import React from 'react';
 import DropdownMenu from './DropdownMenu';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
   return (
 
     <header>
-      <Link to = "./">
-      <h1>Pickup Comps</h1>
+      <Link to = "/" style={{textDecoration:'none'}}>
+        <h1>Pickup Comps</h1>
       </Link>
-      <Link to = "./EasterEgg.js">
+      <Link to = "/EasterEgg">
           <img
             src="https://lanasports.com/wp-content/uploads/2020/10/unnamed.png"
             alt="aba_ball"
@@ -21,7 +21,7 @@ const Header = () => {
         <div class="DropdownMenuComp">
           <DropdownMenu />
         </div>
-        <Link to="./AboutProjContent.js">
+        <Link to="/AboutProjContent">
           <div class="AboutProjButton">About Project</div>
         </Link>
       </nav>
