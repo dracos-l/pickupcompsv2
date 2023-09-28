@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import AboutProjContent from './AboutProjContent';
 import AboutUsContent from './AboutUsContent';
 import ContactContent from './ContactContent';
 
@@ -34,7 +33,6 @@ const DropdownMenu = () => {
             {isOpen && (
                 <ul class="dropdown-menu">
                     <li onClick={() => handleItemClick('AboutUs')}>About Us</li>
-                    <li onClick={() => handleItemClick('AboutProj')}>About the Project</li>
                     <li onClick={() => handleItemClick('Contact')}>Contact Us</li>
                 </ul>
             )}
@@ -43,11 +41,6 @@ const DropdownMenu = () => {
                 <div class="popup">
                         <div className="popup-content">
                             <h3>
-                            {selectedItem === 'AboutProj' && (
-                                <div>
-                                    About the Project
-                                </div>
-                            )}
 
                             {selectedItem === 'AboutUs' && (
                                 <div>
@@ -65,12 +58,6 @@ const DropdownMenu = () => {
                             {/* You can place your content inside a div with a max-height and overflow-y for scrolling */}
                             
                             <div className="scrollable-content">
-                                
-                            {selectedItem === 'AboutProj' && (
-                                <div class="aboutProj">
-                                    <AboutProjContent />
-                                </div>
-                            )}
 
                             {selectedItem === 'AboutUs' && (
                                 <div class="aboutUs">

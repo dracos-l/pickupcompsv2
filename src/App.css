@@ -8,16 +8,13 @@ body {
 
 header {
   background-color: #0e476e;
-  color: #fff;
   padding: 10px 0;
-  text-align: center;
 }
 header h1 {
-  font-size: 36px;
-}
-header p {
-  font-size: 18px;
-  margin-top: 10px;
+  font-size: 24px;
+  color: #ddd;
+  text-align: center;
+  margin: 0;
 }
 
 nav ul {
@@ -55,6 +52,8 @@ nav ul li a:hover {
   position: fixed;
   right: 0;
   top: 0;
+  height: 66px;
+  width: 80px;
 }
 .dropdown button:hover {
   background-color: #e74c3c;
@@ -69,7 +68,7 @@ nav ul li a:hover {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   right: 0;
-  top: 29px;
+  top: 46px;
   z-index: 1;
 }
 .dropdown .dropdown-menu li {
@@ -144,18 +143,53 @@ nav ul li a:hover {
   background-color: #0056b3; /* Button background color on hover */
 }
 
-main {
-  padding: 20px;
-}
-
 .aba {
-  width: 10%;
+  width: 3.9%;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 2px;
   border: 2px solid #333;
   box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  padding: 5px;
   background-color: #ddd;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.AboutProjButton {
+  position: fixed;
+  right: 120px;
+  top: 0;
+  width: 120px;
+  height: 66px;
+  background-color: #0e476e;
+  text-align: center;
+  font-size: 16px;
+  line-height: 66px;
+  color: #ddd;
+}
+.AboutProjButton:hover {
+  background-color: #e74c3c;
+  color: #333; /* Change text color on hover */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.AboutProj h1 {
+  color: #ddd;
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
+}
+.AboutProj p {
+  color: #ddd;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+}
+
+main {
+  padding: 20px;
 }
 
 footer {
