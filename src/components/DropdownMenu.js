@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AboutUsContent from './AboutUsContent';
 import ContactContent from './ContactContent';
 
-const DropdownMenu = (x) => {
+const DropdownMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
-    const [isPopupOpen, setIsPopupOpen] = useState(x ? true : false);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 
     const toggleMenu = () => {
@@ -21,6 +21,26 @@ const DropdownMenu = (x) => {
     const closePopup = () => {
         setIsPopupOpen(false);
     };
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+          const popup = document.getElementById('popup'); // Replace with your popup's ID
+          if (popup && !popup.contains(event.target)) {
+            closePopup(); // Click occurred outside the popup, close it
+          }
+        };
+    
+        if (isPopupOpen) {
+          document.addEventListener('click', handleOutsideClick);
+        } else {
+          document.removeEventListener('click', handleOutsideClick);
+        }
+    
+        return () => {
+          // Clean up the event listener when the component unmounts
+          document.removeEventListener('click', handleOutsideClick);
+        };
+      }, [isPopupOpen]);
     
 
 
@@ -40,7 +60,7 @@ const DropdownMenu = (x) => {
             )}
             </div>
             {isPopupOpen && (
-                <div class="popup">
+                <div class="popup" id="popup">
                         <div className="popup-content">
                             <h3>
 
