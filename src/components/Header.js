@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-
     <header>
+      <div class = "extendedHeader"></div>
         <div class="titleContainer">
           <Link to = "/" style={{textDecoration:'none'}}>
             <h1>Pickup Comps</h1>

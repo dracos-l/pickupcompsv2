@@ -35,6 +35,16 @@ header {
 
 }
 
+.extendedHeader{
+  //make div primary color and fill upwards beyond page
+  background-color: $primary-color;
+  height: 9vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
 
 // Navigation
@@ -133,7 +143,7 @@ nav {
   }
 }
 
-.popup{
+.popup-modal{
   position: fixed;
   width: 60%;
   height: 75%;
@@ -148,27 +158,20 @@ nav {
   border-radius: 10px;
   border: 2px solid $basically-black;
   box-shadow: 0 0 50px 0 rgba(0,0,0,0.5);
-  display: flex;
-  //have all text and button centered
+  overflow-y: auto;
 
-
-
-  .popup-content {
-    max-height: 80vh; /* Adjust the max height as needed */
-    overflow-y: auto; /* Enable vertical scrolling when content overflows */
-  
-    /* Additional styling for the popup content */
+  .popup-content{
+    //have all text and button centered
+     /* Enable vertical scrolling when content overflows */
+     //flexbox and center
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .scrollable-content {
-    /* Optional styling for the scrollable content */
-    /* You can customize this to match your design */
     font-size: 60px;
     color: $basically-white;
   }
+
 
   h3 {
     font-size: 36px; /* Font size for the heading */
@@ -199,6 +202,8 @@ nav {
   button:hover {
     background-color: #0056b3; /* Button background color on hover */
   }
+
+
 }
 
 .aba{
@@ -266,6 +271,11 @@ nav {
     margin:0;
   }
 
+}
+
+*:focus {
+  outline: none;
+  border: 2px solid $secondary-color;
 }
 
 // Main content

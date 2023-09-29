@@ -21,6 +21,16 @@ header .titleContainer {
   margin: 0 auto;
 }
 
+.extendedHeader {
+  background-color: #0e476e;
+  height: 9vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
@@ -95,7 +105,7 @@ nav ul li a:hover {
   transition: background-color 0.3s ease;
 }
 
-.popup {
+.popup-modal {
   position: fixed;
   width: 60%;
   height: 75%;
@@ -108,29 +118,24 @@ nav ul li a:hover {
   border-radius: 10px;
   border: 2px solid #333;
   box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
-  display: flex;
+  overflow-y: auto;
 }
-.popup .popup-content {
-  max-height: 80vh; /* Adjust the max height as needed */
-  overflow-y: auto; /* Enable vertical scrolling when content overflows */
-  /* Additional styling for the popup content */
+.popup-modal .popup-content {
+  /* Enable vertical scrolling when content overflows */
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.popup .scrollable-content {
-  /* Optional styling for the scrollable content */
-  /* You can customize this to match your design */
   font-size: 60px;
   color: #ddd;
 }
-.popup h3 {
+.popup-modal h3 {
   font-size: 36px; /* Font size for the heading */
   margin-bottom: 10px; /* Spacing below the heading */
   color: #ddd;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
-.popup button {
+.popup-modal button {
   background-color: #0e476e;
   color: #fff;
   border: none;
@@ -143,7 +148,7 @@ nav ul li a:hover {
   width: 80px;
   height: 40px;
 }
-.popup button:hover {
+.popup-modal button:hover {
   background-color: #0056b3; /* Button background color on hover */
 }
 
@@ -191,6 +196,11 @@ nav ul li a:hover {
   font-size: 16px;
   text-align: center;
   margin: 0;
+}
+
+*:focus {
+  outline: none;
+  border: 2px solid #e74c3c;
 }
 
 main {
