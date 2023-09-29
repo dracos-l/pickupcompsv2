@@ -16,6 +16,10 @@ header h1 {
   text-align: center;
   margin: 0;
 }
+header .titleContainer {
+  width: 15%;
+  margin: 0 auto;
+}
 
 nav ul {
   list-style: none;

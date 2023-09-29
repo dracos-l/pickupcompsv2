@@ -7,9 +7,11 @@ const Header = () => {
   return (
 
     <header>
-      <Link to = "/" style={{textDecoration:'none'}}>
-        <h1>Pickup Comps</h1>
-      </Link>
+        <div class="titleContainer">
+          <Link to = "/" style={{textDecoration:'none'}}>
+            <h1>Pickup Comps</h1>
+          </Link>
+        </div>
       <Link to = "/EasterEgg">
           <img
             src="https://lanasports.com/wp-content/uploads/2020/10/unnamed.png"
