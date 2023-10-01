@@ -5,6 +5,30 @@ $basically-white: #ddd;
 $basically-black: #333;
 $font-family: Arial, sans-serif;
 
+@mixin main-content {
+  padding: 20px;
+  //text and background color
+  color: $basically-black;
+  background-color: $basically-white;
+  //h, p, and ul styled
+  h1 {
+    font-size: 24px;
+    margin: 0 0 20px 0;
+  }
+  p {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    li {
+      margin: 0 0 10px 0;
+    }
+  }
+}
+
 // Global styles
 body {
   font-family: $font-family;
@@ -23,7 +47,7 @@ header {
     font-size: 24px;
     color: $basically-white;
     text-align: center;
-    margin:0;
+    margin: 0;
   }
 
   .titleContainer{
@@ -168,7 +192,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 60px;
+    font-size: 24px;
     color: $basically-white;
   }
 
@@ -278,9 +302,19 @@ nav {
   border: 2px solid $secondary-color;
 }
 
-// Main content
+// Main Page
 main {
-  padding: 20px;
+  @include main-content;
+}
+
+//AboutProj Page
+.about {
+  @include main-content;
+}
+
+//EasterEgg Page
+.easter{
+  @include main-content;
 }
 
 

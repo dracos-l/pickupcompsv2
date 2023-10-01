@@ -4,29 +4,14 @@ const AboutUsContent = () => {
   return (
     <div class="scrollable-content">
 
-      LeFraud is actually 0-74 in the Finals
-
-46-83: Too lazy to even be born
-
-84-03: Too lazy to even show up
-
-03-05: Missed playoffs
-
-06-11: Lost
-
-12: Baby Thunder
-
-13: Ray Allen
-
-14/15: Lost
-
-16: Injured Warriors
-
-17/18: Lost
-
-19: Missed playoffs
-
-20: Mickey Mouse Summer League Ring
+        <p>Our team is composed of 4 members. We are all students at the University of California, San Diego. We are all in the Computer Science and Engineering major.</p>
+        <p>Our team members are:</p>
+        <ul>
+          <li>Andrew Nguyen</li>
+          <li>Andrew Nguyen</li>
+          <li>Andrew Nguyen</li>
+          <li>Andrew Nguyen</li>
+        </ul>  
 
     </div>
   );

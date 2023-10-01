@@ -126,7 +126,7 @@ nav ul li a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 60px;
+  font-size: 24px;
   color: #ddd;
 }
 .popup-modal h3 {
@@ -205,6 +205,68 @@ nav ul li a:hover {
 
 main {
   padding: 20px;
+  color: #333;
+  background-color: #ddd;
+}
+main h1 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+}
+main p {
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+main ul li {
+  margin: 0 0 10px 0;
+}
+
+.about {
+  padding: 20px;
+  color: #333;
+  background-color: #ddd;
+}
+.about h1 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+}
+.about p {
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+.about ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+.about ul li {
+  margin: 0 0 10px 0;
+}
+
+.easter {
+  padding: 20px;
+  color: #333;
+  background-color: #ddd;
+}
+.easter h1 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+}
+.easter p {
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+.easter ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+.easter ul li {
+  margin: 0 0 10px 0;
 }
 
 footer {

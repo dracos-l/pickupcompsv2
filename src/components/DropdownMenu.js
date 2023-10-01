@@ -41,7 +41,7 @@ const DropdownMenu = () => {
                 onRequestClose={closeModal}
                 contentLabel="Popup Modal"
                 className="popup-modal"
-                shouldCloseOnOverlayClick={true} 
+                shouldCloseOnOverlayClick={true}
                 >
                     <div class="popup-content">
                         <h3>
