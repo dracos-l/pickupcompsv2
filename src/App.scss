@@ -176,7 +176,7 @@ nav {
   background-color: rgba(0,0,0,0.9);
   z-index: 1;
 
-  padding: 20px; /* Padding inside the popup box */
+  padding: 10px; /* Padding inside the popup box */
   margin: 0 auto; /* Center the popup box horizontally */
   //border
   border-radius: 10px;
@@ -191,8 +191,6 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    font-size: 24px;
     color: $basically-white;
   }
 
@@ -202,6 +200,39 @@ nav {
     margin-bottom: 10px; /* Spacing below the heading */
     color: $basically-white;
     text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    //align center
+    text-align: center;
+  }
+
+  p{
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: $basically-white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    //align center
+    text-align: center;
+  }
+
+  li{
+    //align on the right
+    text-align: left;
+    //no bullets
+    list-style-type: none;
+    //padding
+    padding: 0px;
+    font-size: 20px;
+
+  }
+
+  h5{
+    //indent slightly and reduce padding
+    padding-left: 20px;
+    //align left
+    text-align: left;
+    font-size: 16px;
+    //some padding between each line of text
+    padding-bottom: 20px;
+
   }
 
   button{
@@ -219,7 +250,10 @@ nav {
     //size
     width: 80px;
     height: 40px;
-    //use flex to position center of the bottom of the container
+    //align center
+    margin: 0 auto;
+    display: block;
+
 
   }
 
