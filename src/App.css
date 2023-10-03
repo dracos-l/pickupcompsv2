@@ -9,6 +9,10 @@ body {
 header {
   background-color: #0e476e;
   padding: 10px 0;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 header h1 {
   font-size: 24px;
@@ -20,38 +24,46 @@ header .titleContainer {
   width: 15%;
   margin: 0 auto;
 }
-
-.extendedHeader {
+header .extendedHeader {
   background-color: #0e476e;
-  height: 9vh;
+  height: 4vh;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -5;
 }
-
-nav ul {
+header nav {
+  position: relative;
+}
+header nav ul {
   list-style: none;
   padding: 0;
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-nav ul li {
+header nav ul li {
   margin: 0 20px;
 }
-nav ul li a {
+header nav ul li a {
   text-decoration: none;
   color: #0e476e;
   transition: color 0.3s ease;
 }
-nav ul li a:hover {
+header nav ul li a:hover {
   color: #e74c3c;
 }
 
+.linkedIn {
+  width: 40px;
+}
+
+.github {
+  width: 40px;
+}
+
 .dropdown {
-  position: relative;
   display: inline-block;
   color: #333;
 }
@@ -63,9 +75,6 @@ nav ul li a:hover {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  position: fixed;
-  right: 0;
-  top: 0;
   height: 66px;
   width: 80px;
 }
@@ -75,14 +84,11 @@ nav ul li a:hover {
 .dropdown .dropdown-menu {
   display: flex;
   flex-direction: column;
-  position: fixed;
   background-color: #ddd;
   font-family: Arial, sans-serif;
   opacity: 0.9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  right: 0;
-  top: 46px;
   z-index: 1;
 }
 .dropdown .dropdown-menu li {
@@ -190,18 +196,16 @@ nav ul li a:hover {
   box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
   padding: 5px;
   background-color: #ddd;
-  position: fixed;
-  left: 0;
-  top: 0;
+  z-index: 1;
+  flex: 1;
 }
 
 .AboutProjButton {
-  position: fixed;
-  right: 120px;
-  top: 0;
+  z-index: 1;
   width: 120px;
   height: 66px;
   font-weight: bold;
+  text-decoration: none;
   background-color: #0e476e;
   text-align: center;
   font-size: 16px;

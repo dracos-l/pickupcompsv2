@@ -23,7 +23,7 @@ const Header = () => {
         <div class="DropdownMenuComp">
           <DropdownMenu />
         </div>
-        <Link to="/AboutProjContent">
+        <Link to="/AboutProjContent" style={{textDecoration:'none'}}>
           <div class="AboutProjButton">About Project</div>
         </Link>
       </nav>
