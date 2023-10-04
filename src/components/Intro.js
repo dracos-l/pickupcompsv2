@@ -2,7 +2,7 @@ import React from 'react';
 
 function Intro() {
   return (
-    <div>
+    <div class = "intro">
         <h1>My Video Page</h1>
       <main>
         <section>

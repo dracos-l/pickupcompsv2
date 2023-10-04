@@ -4,55 +4,81 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 header {
   background-color: #0e476e;
   padding: 10px 0;
+  height: 54px;
+}
+header .logo {
+  width: 50px;
+  border-radius: 2px;
+  border: 2px solid #333;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  background-color: #ddd;
   position: relative;
+  top: -6px;
+  left: 40%;
+}
+header .logo:hover {
+  background-color: #e74c3c;
+  color: #333; /* Change text color on hover */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+header .aba {
+  width: 52px;
+  border-radius: 2px;
+  border: 2px solid #333;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  background-color: #ddd;
+  position: relative;
+  top: -6px;
+  right: -5px;
+}
+header .aba:hover {
+  background-color: #e74c3c;
+  color: #333; /* Change text color on hover */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+header nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: row;
+  position: relative;
+  left: 80%;
 }
-header h1 {
-  font-size: 24px;
-  color: #ddd;
+header .AboutProjButton {
+  width: 120px;
+  height: 66px;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #0e476e;
   text-align: center;
-  margin: 0;
+  font-size: 16px;
+  line-height: 66px;
+  position: relative;
+  top: -76px;
+  color: #ddd;
 }
-header .titleContainer {
-  width: 15%;
-  margin: 0 auto;
+header .AboutProjButton:hover {
+  background-color: #e74c3c;
+  color: #333; /* Change text color on hover */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 header .extendedHeader {
   background-color: #0e476e;
-  height: 4vh;
+  height: 500px;
   width: 100%;
-  position: fixed;
-  top: 0;
+  top: 0px;
   left: 0;
-  z-index: -5;
-}
-header nav {
-  position: relative;
-}
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-header nav ul li {
-  margin: 0 20px;
-}
-header nav ul li a {
-  text-decoration: none;
-  color: #0e476e;
-  transition: color 0.3s ease;
-}
-header nav ul li a:hover {
-  color: #e74c3c;
+  z-index: -3;
+  position: fixed;
 }
 
 .linkedIn {
@@ -63,9 +89,39 @@ header nav ul li a:hover {
   width: 40px;
 }
 
+.intro {
+  padding: 20px;
+  color: #333;
+  background-color: #ddd;
+}
+.intro h1 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+}
+.intro p {
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+.intro ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+.intro ul li {
+  margin: 0 0 10px 0;
+}
+
 .dropdown {
   display: inline-block;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: -76px;
+  left: 20%;
+  width: 80px;
 }
 .dropdown button {
   background-color: #0e476e;
@@ -82,14 +138,16 @@ header nav ul li a:hover {
   background-color: #e74c3c;
 }
 .dropdown .dropdown-menu {
-  display: flex;
-  flex-direction: column;
   background-color: #ddd;
   font-family: Arial, sans-serif;
   opacity: 0.9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  list-style-type: none;
+  padding: 0px;
+  position: relative;
+  top: -12px;
+  left: -50%;
 }
 .dropdown .dropdown-menu li {
   text-align: center;
@@ -186,37 +244,6 @@ header nav ul li a:hover {
 }
 .popup-modal button:hover {
   background-color: #0056b3; /* Button background color on hover */
-}
-
-.aba {
-  width: 52px;
-  margin: 0 auto;
-  border-radius: 2px;
-  border: 2px solid #333;
-  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  background-color: #ddd;
-  z-index: 1;
-  flex: 1;
-}
-
-.AboutProjButton {
-  z-index: 1;
-  width: 120px;
-  height: 66px;
-  font-weight: bold;
-  text-decoration: none;
-  background-color: #0e476e;
-  text-align: center;
-  font-size: 16px;
-  line-height: 66px;
-  color: #ddd;
-}
-.AboutProjButton:hover {
-  background-color: #e74c3c;
-  color: #333; /* Change text color on hover */
-  transition: background-color 0.3s ease;
-  cursor: pointer;
 }
 
 .AboutProj h1 {
