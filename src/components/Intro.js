@@ -3,19 +3,21 @@ import React from 'react';
 function Intro() {
   return (
     <div class = "intro">
-        <h1>My Video Page</h1>
       <main>
         <section>
           <h2>Embedded Video</h2>
           {/* Replace the src attribute with your video's embed URL */}
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/your-video-id"
-            title="Embedded Video"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+          <div class="video">
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/BKYJ5AIOU9I"
+                title="Embedded Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+            ></iframe>
+          </div>
         </section>
       </main>
     </div>
