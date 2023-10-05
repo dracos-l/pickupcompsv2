@@ -225,20 +225,6 @@ header .extendedHeader {
   width: 40px;
 }
 
-.intro .video {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
-}
-.intro .video iframe {
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-
 main {
   padding: 20px;
   color: #333;
@@ -303,6 +289,20 @@ main ul li {
 }
 .easter ul li {
   margin: 0 0 10px 0;
+}
+
+.intro .video {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.intro .video iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 footer {

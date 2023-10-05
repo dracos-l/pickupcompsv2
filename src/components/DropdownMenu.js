@@ -6,20 +6,27 @@ import Modal from 'react-modal';
 const DropdownMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null)
+    const [isScrollDisabled, setScrollDisabled] = useState(false)
 
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+        setScrollDisabled(!isScrollDisabled);
     };
 
     const handleItemClick = (item) => {
         setIsOpen(false);
         setSelectedItem(item);
+        setScrollDisabled(!isScrollDisabled);
     };
     
     const closeModal = () => {
         setSelectedItem(null);
       };
+
+    const bodyStyle = {
+    overflow: isScrollDisabled ? 'hidden' : 'auto', // 'auto' to re-enable scrolling
+    };
 
     return (
         <div>
@@ -76,6 +83,13 @@ const DropdownMenu = () => {
                         
                     </div>
             </Modal>
+            <style>
+                {`
+                body {
+                    overflow: ${bodyStyle.overflow};
+                }
+                `}
+            </style>
         </div>
     );}
 

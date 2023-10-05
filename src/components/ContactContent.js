@@ -3,8 +3,6 @@ import React from 'react';
 const ContactContent = () => {
   return (
     <div class="scrollable-content">
-
-  <p>Contact Us:</p>
         <ul>
           <li>Logan Dracos</li>
           {/* paragraph description */}

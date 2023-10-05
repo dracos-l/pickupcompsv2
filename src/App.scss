@@ -321,6 +321,8 @@ header {
 }
 
 
+
+
 *:focus {
   outline: none;
 }
@@ -330,6 +332,23 @@ header {
 }
 .github{
   width:40px;
+}
+
+
+
+// Main Page
+main {
+  @include main-content;
+}
+
+//AboutProj Page
+.about {
+  @include main-content;
+}
+
+//EasterEgg Page
+.easter{
+  @include main-content;
 }
 
 //Intro Component
@@ -348,21 +367,6 @@ header {
     width: 100%;
     position: absolute;
   }
-}
-
-// Main Page
-main {
-  @include main-content;
-}
-
-//AboutProj Page
-.about {
-  @include main-content;
-}
-
-//EasterEgg Page
-.easter{
-  @include main-content;
 }
 
 
