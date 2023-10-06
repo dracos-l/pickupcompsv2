@@ -21,8 +21,8 @@ $font-family: Arial, sans-serif;
   }
   ul {
     list-style: none;
-    padding: 0;
     margin: 0 0 20px 0;
+
     li {
       margin: 0 0 10px 0;
     }
@@ -56,7 +56,7 @@ header {
     //border
     border-radius: 2px;
     border: 2px solid $basically-black;
-    box-shadow: 0 0 50px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     //padding
     padding: 5px;
     //background
@@ -80,7 +80,7 @@ header {
     //border
     border-radius: 2px;
     border: 2px solid $basically-black;
-    box-shadow: 0 0 50px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     //padding
     padding: 5px;
     //background
@@ -96,7 +96,7 @@ header {
     &:hover {
       background-color: $secondary-color;
       color: #333; /* Change text color on hover */
-      transition: background-color 0.3s ease;
+      transition: background-color 0.66s ease;
       cursor:pointer;
     }
   }
@@ -114,7 +114,6 @@ header {
     height: 66px;
     //bold
     font-weight: bold;
-    text-decoration: none;
     //background
     background-color: $primary-color;
     //text
@@ -124,14 +123,13 @@ header {
     line-height:66px;
     //center in header
     margin-top: 4px;
-
-  
     color: $basically-white;
+
     //hover
     &:hover {
       background-color: $secondary-color;
       color: #333; /* Change text color on hover */
-      transition: background-color 0.3s ease;
+      transition: background-color 0.66s ease;
       cursor:pointer;
     }
   }
@@ -165,7 +163,7 @@ header {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.66s ease;
     //adjust size to fill header
     height: 66px;
     width: 80px;
@@ -189,6 +187,17 @@ header {
     position: fixed;
     top: 74px;
     right:  0;
+    animation: fadeIn 0.66s;
+    animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
 
     li {
@@ -201,7 +210,7 @@ header {
     li:hover {
       background-color: $secondary-color;
       color: #333; /* Change text color on hover */
-      transition: background-color 0.3s ease;
+      transition: background-color 0.66s ease;
       cursor:pointer;
     }
     
@@ -211,7 +220,6 @@ header {
       text-decoration: none;
       display: block;
       transition: background-color 0.3s ease;
-  
     }
   }
 }

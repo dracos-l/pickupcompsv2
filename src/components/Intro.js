@@ -5,7 +5,7 @@ function Intro() {
     <div class = "intro">
       <main>
         <section>
-          <h2>Embedded Video</h2>
+          <h2>"How to Video" or whatever we decide to do w that</h2>
           {/* Replace the src attribute with your video's embed URL */}
           <div class="video">
             <iframe
