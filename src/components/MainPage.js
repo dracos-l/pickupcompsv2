@@ -1,12 +1,8 @@
 import React from 'react';
-import Intro from './Intro'
 
 function MainPage() {
   return (
     <div className="main-container">
-      <div class="intro-container">
-        <Intro />
-      </div>
 
       {/* Main Content Section */}
       <main>

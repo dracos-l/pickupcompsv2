@@ -8,12 +8,13 @@ body {
 }
 
 header {
-  background-color: #0e476e;
   padding: 10px 0;
   height: 54px;
   display: flex;
   align-items: center; /* Vertically center align items */
   justify-content: space-between;
+  background-color: #333;
+  border-radius: 20px;
 }
 header .logo {
   width: 50px;
@@ -25,11 +26,12 @@ header .logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 20px;
 }
 header .logo:hover {
   background-color: #e74c3c;
   color: #333; /* Change text color on hover */
-  transition: background-color 0.3s ease;
+  transition: background-color 0.66s ease;
   cursor: pointer;
 }
 header .aba {
@@ -45,6 +47,7 @@ header .aba {
   justify-self: flex-start;
   position: relative;
   left: 4px;
+  border-radius: 20px;
 }
 header .aba:hover {
   background-color: #e74c3c;
@@ -64,23 +67,17 @@ header .AboutProjButton {
   text-align: center;
   font-size: 16px;
   line-height: 66px;
-  margin-top: 4px;
+  margin-top: 3px;
   color: #ddd;
+  border-radius: 20px;
+  border: 2px solid #333;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
 }
 header .AboutProjButton:hover {
   background-color: #e74c3c;
   color: #333; /* Change text color on hover */
   transition: background-color 0.66s ease;
   cursor: pointer;
-}
-header .extendedHeader {
-  background-color: #0e476e;
-  height: 500px;
-  width: 100%;
-  top: 0px;
-  left: 0;
-  z-index: -3;
-  position: fixed;
 }
 
 .dropdown {
@@ -98,6 +95,9 @@ header .extendedHeader {
   transition: background-color 0.66s ease;
   height: 66px;
   width: 80px;
+  border-radius: 20px;
+  border: 2px solid #333;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
 }
 .dropdown button:hover {
   background-color: #e74c3c;
@@ -116,6 +116,7 @@ header .extendedHeader {
   right: 0;
   animation: fadeIn 0.66s;
   animation-fill-mode: forwards;
+  border-radius: 20px;
 }
 @keyframes fadeIn {
   from {
@@ -135,6 +136,7 @@ header .extendedHeader {
   background-color: #e74c3c;
   color: #333; /* Change text color on hover */
   transition: background-color 0.66s ease;
+  border-radius: 20px;
   cursor: pointer;
 }
 .dropdown .dropdown-menu a {
@@ -302,6 +304,7 @@ main ul li {
   padding-bottom: 56.25%;
   position: relative;
   height: 0;
+  border-radius: 20px;
 }
 .intro .video iframe {
   left: 0;

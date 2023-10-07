@@ -3,6 +3,7 @@ import MainPage from './components/MainPage';
 import Header from './components/Header';
 import EasterEgg from './components/EasterEgg';
 import AboutProjContent from './components/AboutProjContent';
+import Intro from './components/Intro';
 import Footer from './components/Footer';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
@@ -21,6 +22,7 @@ function App() {
             element={
               <>
                 <Header />
+                <Intro />
                 <MainPage />
                 <Footer />
               </>

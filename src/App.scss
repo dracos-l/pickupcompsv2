@@ -42,13 +42,14 @@ body {
 
 // Header
 header {
-  background-color: $primary-color;
   padding: 10px 0;
   //size
   height: 54px;
   display: flex;
   align-items: center; /* Vertically center align items */
   justify-content: space-between;
+  background-color: $basically-black;
+  border-radius: 20px;
   
   .logo {
     //size and placement centered
@@ -64,12 +65,13 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 20px;
 
 
     &:hover {
       background-color: $secondary-color;
       color: #333; /* Change text color on hover */
-      transition: background-color 0.3s ease;
+      transition: background-color 0.66s ease;
       cursor:pointer;
     }
   }
@@ -91,6 +93,7 @@ header {
     justify-self: flex-start;
     position:relative;
     left: 4px;
+    border-radius: 20px;
 
 
     &:hover {
@@ -122,8 +125,13 @@ header {
     //text color
     line-height:66px;
     //center in header
-    margin-top: 4px;
+    margin-top: 3px;
     color: $basically-white;
+    //border
+    border-radius: 20px;
+    border: 2px solid $basically-black;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+
 
     //hover
     &:hover {
@@ -132,19 +140,6 @@ header {
       transition: background-color 0.66s ease;
       cursor:pointer;
     }
-  }
-
-  .extendedHeader{
-    //make div primary color and fill upwards beyond page
-    background-color: $primary-color;
-    height: 500px;
-    //width of the header
-    width: 100%;
-    top: 0px;
-    left: 0;
-    z-index: -3;
-    //position above the screen
-    position: fixed;
   }
 }
 
@@ -167,6 +162,10 @@ header {
     //adjust size to fill header
     height: 66px;
     width: 80px;
+    //border
+    border-radius: 20px;
+    border: 2px solid $basically-black;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
 
     &:hover {
       background-color: $secondary-color;
@@ -189,6 +188,7 @@ header {
     right:  0;
     animation: fadeIn 0.66s;
     animation-fill-mode: forwards;
+    border-radius: 20px;
     //animation
     @keyframes fadeIn {
       from {
@@ -211,6 +211,7 @@ header {
       background-color: $secondary-color;
       color: #333; /* Change text color on hover */
       transition: background-color 0.66s ease;
+      border-radius: 20px;
       cursor:pointer;
     }
     
@@ -321,10 +322,9 @@ header {
     //align center
     margin: 0 auto;
     display: block;
-  }
-
-  button:hover {
-    background-color: #0056b3; /* Button background color on hover */
+    &:hover {
+      background-color: #0056b3; /* Button background color on hover */
+    }
   }
 }
 
@@ -366,6 +366,7 @@ main {
     padding-bottom: 56.25%;
     position: relative;
     height: 0;
+    border-radius: 20px;
   }
   
   .video iframe {
