@@ -393,10 +393,11 @@ main {
 }
 
 .formContainer {
+  @include main-content;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100vh; // Adjust as needed
+  height: 60vh; // Adjust as needed
 }
 
 .formImage {
