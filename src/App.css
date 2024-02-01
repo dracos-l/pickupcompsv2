@@ -9,7 +9,7 @@ body {
 
 header {
   padding: 10px 0;
-  height: 54px;
+  height: 34px;
   display: flex;
   align-items: center; /* Vertically center align items */
   justify-content: space-between;
@@ -17,7 +17,7 @@ header {
   border-radius: 20px;
 }
 header .logo {
-  width: 50px;
+  width: 32px;
   border-radius: 2px;
   border: 2px solid #333;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
@@ -26,7 +26,7 @@ header .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 header .logo:hover {
   background-color: #e74c3c;
@@ -35,7 +35,7 @@ header .logo:hover {
   cursor: pointer;
 }
 header .aba {
-  width: 52px;
+  width: 32px;
   border-radius: 2px;
   border: 2px solid #333;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
@@ -47,7 +47,7 @@ header .aba {
   justify-self: flex-start;
   position: relative;
   left: 4px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 header .aba:hover {
   background-color: #e74c3c;
@@ -60,18 +60,23 @@ header nav {
   flex-direction: row;
 }
 header .AboutProjButton {
-  width: 120px;
-  height: 66px;
+  width: 100px;
+  height: 40px;
   font-weight: bold;
   background-color: #0e476e;
   text-align: center;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 66px;
-  margin-top: 3px;
+  margin-top: 7px;
   color: #ddd;
   border-radius: 20px;
   border: 2px solid #333;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-start;
+  position: relative;
 }
 header .AboutProjButton:hover {
   background-color: #e74c3c;
@@ -90,14 +95,19 @@ header .AboutProjButton:hover {
   color: #ddd;
   border: none;
   padding: 10px 20px;
+  margin-block: 4px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.66s ease;
-  height: 66px;
+  height: 40px;
   width: 80px;
   border-radius: 20px;
   border: 2px solid #333;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-start;
 }
 .dropdown button:hover {
   background-color: #e74c3c;
@@ -112,11 +122,11 @@ header .AboutProjButton:hover {
   padding: 0px;
   margin: 0px;
   position: fixed;
-  top: 74px;
+  top: 54px;
   right: 0;
   animation: fadeIn 0.66s;
   animation-fill-mode: forwards;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 @keyframes fadeIn {
   from {

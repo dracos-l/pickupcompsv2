@@ -44,7 +44,7 @@ body {
 header {
   padding: 10px 0;
   //size
-  height: 54px;
+  height: 34px;
   display: flex;
   align-items: center; /* Vertically center align items */
   justify-content: space-between;
@@ -53,7 +53,7 @@ header {
   
   .logo {
     //size and placement centered
-    width: 50px;
+    width: 32px;
     //border
     border-radius: 2px;
     border: 2px solid $basically-black;
@@ -65,7 +65,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    border-radius: 10px;
 
 
     &:hover {
@@ -78,7 +78,7 @@ header {
 
   .aba{
     //size and placement centered
-    width: 52px;
+    width: 32px;
     //border
     border-radius: 2px;
     border: 2px solid $basically-black;
@@ -93,7 +93,7 @@ header {
     justify-self: flex-start;
     position:relative;
     left: 4px;
-    border-radius: 20px;
+    border-radius: 10px;
 
 
     &:hover {
@@ -113,24 +113,29 @@ header {
   
   .AboutProjButton{
     //size
-    width: 120px;
-    height: 66px;
+    width: 100px;
+    height: 40px;
     //bold
     font-weight: bold;
     //background
     background-color: $primary-color;
     //text
     text-align: center;
-    font-size: 16px;
+    font-size: 13px;
     //text color
     line-height:66px;
     //center in header
-    margin-top: 3px;
+    margin-top: 7px;
     color: $basically-white;
     //border
     border-radius: 20px;
     border: 2px solid $basically-black;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-start;
+    position: relative;
 
 
     //hover
@@ -156,16 +161,21 @@ header {
     color: $basically-white;
     border: none;
     padding: 10px 20px;
+    margin-block: 4px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.66s ease;
     //adjust size to fill header
-    height: 66px;
+    height: 40px;
     width: 80px;
     //border
     border-radius: 20px;
     border: 2px solid $basically-black;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-start;
 
     &:hover {
       background-color: $secondary-color;
@@ -184,11 +194,11 @@ header {
     padding: 0px;
     margin: 0px;
     position: fixed;
-    top: 74px;
+    top: 54px;
     right:  0;
     animation: fadeIn 0.66s;
     animation-fill-mode: forwards;
-    border-radius: 20px;
+    border-radius: 15px;
     //animation
     @keyframes fadeIn {
       from {
