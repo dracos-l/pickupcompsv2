@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Intro() {
   return (
@@ -19,6 +20,9 @@ function Intro() {
             ></iframe>
           </div>
         </section>
+        <Link to="/Form" style={{textDecoration:'none'}}>
+          <button class="startButton" > Get Started! </button>
+        </Link>
       </main>
     </div>
   );

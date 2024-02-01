@@ -24,11 +24,21 @@ function App() {
               <>
                 <Header />
                 <Intro />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/Form"
+            element={
+              <>
+                <Header />
                 <MainPage />
                 <Footer />
               </>
             }
           />
+          
           <Route
             path="/AboutProjContent"
             element={

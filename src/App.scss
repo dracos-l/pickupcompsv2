@@ -386,6 +386,31 @@ main {
     width: 100%;
     position: absolute;
   }
+
+  button{
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    //add padding
+    padding: 10px 20px;
+    //rounded
+    border-radius: 10px;
+    //size
+    width: 140px;
+    height: 40px;
+    //align center
+    margin: 0 auto;
+    display: block;
+    //move button down
+    margin-top: 20px;
+    &:hover {
+      background-color: #0056b3; /* Button background color on hover */
+    }
+  
+  }
 }
 
 .results{
