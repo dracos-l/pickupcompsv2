@@ -1,7 +1,7 @@
 const dfd = require("danfojs-node");
 
 // Replace 'player_data.csv' with the path to your CSV file
-dfd.read_csv("player_data.csv").then(df => {
+dfd.read_csv("../data/player_data.csv").then(df => {
     const myDict = {
         'AST_PCT_percentile': 0.5, 
         'DREB_PCT_percentile' : 0.5,
