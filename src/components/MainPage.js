@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const MainPage = () => {
@@ -18,70 +18,77 @@ const MainPage = () => {
     // Add more questions as needed
   ];
 
-  
-
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [formData, setFormData] = useState({
-    input: '',
+    answer1: '',
+    answer2: '', // Add another answer field
   });
 
   const currentQuestion = questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
-  const handleInputChange = (value) => {
-    setFormData({
-      input: value,
-    });
+  const handleInputChange = (answerNumber, value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [`answer${answerNumber}`]: value,
+    }));
   };
 
   const handleNextClick = () => {
     // Do something with formData if needed
-    console.log(`Answer to ${currentQuestion.text}:`, formData.input);
+    console.log(`Answers to ${currentQuestion.questionText}:`, formData.answer1, formData.answer2);
 
     // Move to the next question
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
 
-    // Reset input field for the next question
+    // Reset input fields for the next question
     setFormData({
-      input: '',
+      answer1: '',
+      answer2: '',
     });
-
   };
 
   return (
-    <div class="formContainer">
-
-      <div class = "formImage">
+    <div className="formContainer">
+      <div className="formImage">
         <img src={currentQuestion.imageSrc} alt={`Question ${currentQuestion.id}`} />
       </div>
 
-      <div class="text-boxes">
-        <div class="question-text">{currentQuestion.questionText}</div>
+      <div className="text-boxes">
+        <div className="question-text">{currentQuestion.questionText}</div>
+        <div className="explanation-text">{currentQuestion.explanationText}</div>
 
-        <div class="explanation-text">{currentQuestion.explanationText}</div>
-
-        <div class="input-text">
+        {/* Answer Box 1 */}
+        <div className="input-text">
           <input
             type="text"
-            value={formData.input}
-            onChange={(e) => handleInputChange(e.target.value)}
-            placeholder="Enter your answer"
+            value={formData.answer1}
+            onChange={(e) => handleInputChange(1, e.target.value)}
+            placeholder="Enter your answer 1"
           />
         </div>
 
-        <div class="formButton">
+        {/* Answer Box 2 */}
+        <div className="input-text">
+          <input
+            type="text"
+            value={formData.answer2}
+            onChange={(e) => handleInputChange(2, e.target.value)}
+            placeholder="Enter your answer 2"
+          />
+        </div>
+
+        <div className="formButton">
           {isLastQuestion ? (
             <Link to="/results">
-              <button>Finish</button>
+              <button onClick={handleNextClick}>Finish</button>
             </Link>
           ) : (
-            <button onClick={() => handleNextClick()}>
-                Next
+            <button onClick={handleNextClick}>
+              Next
             </button>
           )}
         </div>
-
       </div>
     </div>
   );
