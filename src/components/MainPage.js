@@ -135,7 +135,7 @@ const MainPage = () => {
             type="text"
             value={formData.answer1}
             onChange={(e) => handleInputChange(1, e.target.value)}
-            placeholder="Enter your answer 1"
+            placeholder="Enter your Volume"
           />
         </div>
 
@@ -145,7 +145,7 @@ const MainPage = () => {
             type="text"
             value={formData.answer2}
             onChange={(e) => handleInputChange(2, e.target.value)}
-            placeholder="Enter your answer 2"
+            placeholder="Enter your Efficiency"
           />
         </div>
 

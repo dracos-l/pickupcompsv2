@@ -7,7 +7,7 @@ const ContactContent = () => {
           <li>Logan Dracos</li>
           {/* paragraph description */}
           <h5>
-            logandracos@icloud.com
+            logan.dracos@duke.edu
             <br></br>
             <br></br>
             <a href="https://www.linkedin.com/in/logandracos" target="_blank" rel="noopener noreferrer">
