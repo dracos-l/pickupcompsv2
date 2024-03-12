@@ -37,13 +37,14 @@ function Results() {
             ))}
             <h2>Highlight</h2>
             <div>
-                <p>Offense Value: {highlightResult.Offense_value}</p>
-                <p>Defense Value: {highlightResult.Defense_value}</p>
-                <p>Min Value: {highlightResult.Min_value?.join(': ')}</p>
-                <p>Max Value: {highlightResult.Max_value?.join(': ')}</p>
+                <p>Offensive Similarity: {highlightResult.Offense_value}</p>
+                <p>Defensive Similarity: {highlightResult.Defense_value}</p>
+                <p>Most Similar Stat: {highlightResult.Most_similar_value}</p>
+                <p>Least Similar Stat: {highlightResult.Least_similar_value}</p>
             </div>
         </div>
     );
+    
 }
 
 export default Results;
