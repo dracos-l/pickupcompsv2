@@ -116,19 +116,26 @@ function results(similarityDic) {
     return dic;
 }
 
-
 function highlights(similarityDic) {
     let dic = {};
     let similarity1 = Object.entries(similarityDic)
                             .sort((a, b) => a[1]['Similarity Score'] - b[1]['Similarity Score'])[0];
-    dic['Offense_value'] = similarity1[1]['Offense'];
-    dic['Defense_value'] = similarity1[1]['Defense'];
+
+    // Apply the transformation to Offense_value and Defense_value with rounding
+    dic['Offense_value'] = ((1 - similarity1[1]['Offense']) * 100).toFixed(2);
+    dic['Defense_value'] = ((1 - similarity1[1]['Defense']) * 100).toFixed(2);
+
+    // Delete 'Offense' and 'Defense' from the similarity1[1] dictionary
     delete similarity1[1]['Offense'];
     delete similarity1[1]['Defense'];
+
+    // Find the key of the minimum and maximum value in the similarity1[1] dictionary
     let keyOfMinValue = Object.keys(similarity1[1]).reduce((a, b) => similarity1[1][a] < similarity1[1][b] ? a : b);
     let keyOfMaxValue = Object.keys(similarity1[1]).reduce((a, b) => similarity1[1][a] > similarity1[1][b] ? a : b);
-    dic['Min_value'] = [keyOfMinValue, similarity1[1][keyOfMinValue]];
-    dic['Max_value'] = [keyOfMaxValue, similarity1[1][keyOfMaxValue]];
+
+    // Apply the transformation and rounding to "Most Similar Stat" and "Least Similar Stat"
+    dic['Most_similar_value'] = `${keyOfMinValue}: ${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)}`;
+    dic['Least_similar_value'] = `${keyOfMaxValue}: ${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)}`;
 
     return dic;
 }
