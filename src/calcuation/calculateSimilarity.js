@@ -121,6 +121,7 @@ function highlights(similarityDic) {
     let similarity1 = Object.entries(similarityDic)
                             .sort((a, b) => a[1]['Similarity Score'] - b[1]['Similarity Score'])[0];
     // Apply the transformation to Offense_value and Defense_value with rounding
+    dic['Name'] = similarity1[0];
     dic['Offense_value'] = ((1 - similarity1[1]['Offense']) * 100).toFixed(2);
     dic['Defense_value'] = ((1 - similarity1[1]['Defense']) * 100).toFixed(2);
 

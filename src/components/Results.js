@@ -35,7 +35,7 @@ function Results() {
                     <p>{result}</p>
                 </div>
             ))}
-            <h2>Highlight</h2>
+            <h2>Highlight: {highlightResult.Name}</h2>
             <div>
                 <p>Offensive Similarity: {highlightResult.Offense_value}</p>
                 <p>Defensive Similarity: {highlightResult.Defense_value}</p>
