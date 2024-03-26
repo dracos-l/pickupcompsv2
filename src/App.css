@@ -110,7 +110,8 @@ header .AboutProjButton:hover {
   justify-self: flex-start;
 }
 .dropdown button:hover {
-  background-color: #e74c3c;
+  background-color: #0056b3; /* Button background color on hover */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 .dropdown .dropdown-menu {
   background-color: #ddd;
@@ -340,6 +341,7 @@ main ul li {
 }
 .intro button:hover {
   background-color: #0056b3; /* Button background color on hover */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .results {
@@ -432,6 +434,10 @@ main ul li {
     opacity: 1;
   }
 }
+.title-text:hover {
+  background-color: #0056b3; /* Button background color on hover */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
 
 .text-boxes {
   width: 50%;
@@ -451,6 +457,16 @@ main ul li {
   display: flex;
   justify-content: center;
   white-space: nowrap;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .typewriter-wrapper h1 {
   animation: type 3s 0.4s steps(30, end) forwards, blink 0.66s step-end infinite;
@@ -498,6 +514,14 @@ main ul li {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  border-radius: 10px;
+}
+.input-text input:hover {
+  border: 3px solid #0e476e;
+}
+.input-text input:focus {
+  border: 4px solid #0e476e;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .formButton {
@@ -524,6 +548,7 @@ main ul li {
 }
 .formButton button:hover {
   background-color: #0056b3; /* Button background color on hover */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 .formButton a {
   color: #0e476e;

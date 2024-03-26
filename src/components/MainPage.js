@@ -6,6 +6,7 @@ const MainPage = () => {
     {
       "id": 1,
       "title": "Paint",
+      "titleLink": "https://youtu.be/3VlMSo7AXow?si=HsQHnOMRw-37Di2N",
       "questionText": "What is your volume and efficiency in the Paint?",
       "explanationText": "Compared to the people you play pickup basketball against, what percentile do you think you are when it comes to how many shots you take in the paint and how efficient you are at making them? (Use the visual to see what’s a paint shot)",
       "exampleText": "For example, I am not as good around the basketball and, therefore, I don’t take many shots in the paint, so I’m probably below 30% for both.",
@@ -165,7 +166,11 @@ const MainPage = () => {
 
       <div className="text-boxes">
 
-        <div className="title-text">{currentQuestion.title}</div>
+        <Link to={currentQuestion.titleLink} style={{textDecoration:'none'}}>
+          <div className="title-text">
+              {currentQuestion.title}
+          </div>
+        </Link>
 
         <div class="typewriter-wrapper" >
           <h1 class="typewriter-text line-1">{currentQuestion.questionText}</h1>
@@ -179,7 +184,7 @@ const MainPage = () => {
             type="text"
             value={formData.answer1}
             onChange={(e) => handleInputChange(1, e.target.value)}
-            placeholder="Enter your Volume"
+            placeholder="Volume"
           />
         </div>
 
@@ -189,12 +194,12 @@ const MainPage = () => {
             type="text"
             value={formData.answer2}
             onChange={(e) => handleInputChange(2, e.target.value)}
-            placeholder="Enter your Efficiency"
+            placeholder="Efficiency"
           />
         </div>
 
         <div className="formButton">
-          {!isFirstQuestion && <button onClick={handleBackClick}>Back</button>}
+          {!isFirstQuestion && <button onClick={handleBackClick}>Prev</button>}
           
           {isLastQuestion ? (
             <button onClick={handleNextClick}>Finish</button>

@@ -29,6 +29,14 @@ $font-family: Arial, sans-serif;
   }
 }
 
+@mixin buttonHover{
+  &:hover {
+    background-color: #0056b3; /* Button background color on hover */
+    //shadow
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  }
+}
+
 // Global styles
 body {
   font-family: $font-family;
@@ -177,9 +185,7 @@ header {
     justify-content: center;
     justify-self: flex-start;
 
-    &:hover {
-      background-color: $secondary-color;
-    }
+    @include buttonHover;
   }
 
   .dropdown-menu{
@@ -406,10 +412,7 @@ main {
     display: block;
     //move button down
     margin-top: 20px;
-    &:hover {
-      background-color: #0056b3; /* Button background color on hover */
-    }
-
+    @include buttonHover;
   }
 }
 
@@ -472,6 +475,7 @@ main {
         opacity: 1;
       }
     }
+    @include buttonHover;
 }
 
 .text-boxes {
@@ -494,7 +498,17 @@ main {
   display: flex;
   justify-content: center;
   white-space: nowrap;
-
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
   h1{
     animation: type 3s 0.4s steps(30, end) forwards,
@@ -549,6 +563,17 @@ main {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  //rounded
+  border-radius: 10px;
+  
+  &:hover {
+    border: 3px solid $primary-color;
+  }
+  &:focus{
+    border: 4px solid $primary-color;
+    //shadow
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  }
 }
 
 .formButton{ 
@@ -579,10 +604,7 @@ main {
     //align center
     margin: 0 auto;
     display: block;
-    
-    &:hover {
-      background-color: #0056b3; /* Button background color on hover */
-    }
+    @include buttonHover;
   }
 
   a{
