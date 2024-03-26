@@ -138,7 +138,11 @@ const MainPage = () => {
 
     // Navigate to the next question using the name of the next question's title as a route parameter
     if(isLastQuestion) navigate('/Results');
-    else navigate(`/Form/${questions[currentQuestionIndex + 1].title}`);
+    else 
+    {
+      navigate(`/Form/${questions[currentQuestionIndex + 1].title}`);
+      window.location.reload();
+    }
   };
 
   const handleBackClick = () => {
@@ -150,6 +154,7 @@ const MainPage = () => {
 
     // Navigate to the previous question using the same method as above
     navigate(`/Form/${questions[currentQuestionIndex - 1].title}`);
+    window.location.reload();
   };
 
   return (
