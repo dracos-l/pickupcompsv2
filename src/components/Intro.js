@@ -20,7 +20,7 @@ function Intro() {
             ></iframe>
           </div>
         </section>
-        <Link to="/Form" style={{textDecoration:'none'}}>
+        <Link to="/Form/Paint" style={{textDecoration:'none'}}>
           <button class="startButton" > Get Started! </button>
         </Link>
       </main>

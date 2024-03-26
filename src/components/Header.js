@@ -9,14 +9,14 @@ const Header = () => {
       <header>
           <Link to = "/EasterEgg">
             <img
-              src="https://lanasports.com/wp-content/uploads/2020/10/unnamed.png"
+              src="https://lanasports.com/cdn/shop/files/Mikan-e1699463351760.png?v=1707862510&width=655"
               alt="aba_ball"
               class = "aba"
             />
           </Link>
           <Link to = "/" style={{textDecoration:'none'}}>
             <img
-              src="https://lanasports.com/wp-content/uploads/2020/10/unnamed.png"
+              src="https://lanasports.com/cdn/shop/files/Mikan-e1699463351760.png?v=1707862510&width=655"
               alt="logo"
               class="logo"
             />

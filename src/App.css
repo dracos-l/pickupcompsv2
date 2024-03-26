@@ -391,6 +391,16 @@ main ul li {
 .formImage {
   width: 50%;
   text-align: center;
+  animation: fadeIn 9s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .formImage img {
@@ -410,6 +420,65 @@ main ul li {
 .input-text,
 .formButton {
   margin-bottom: 20px;
+}
+
+.title-text {
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #0e476e;
+  color: #ddd;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.question-text {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 2px;
+  animation: typing 6s steps(40, 80%), blink-caret 0.75s step-end infinite;
+  animation-delay: 6s;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+.explanation-text, .input-text, .formButton {
+  animation: fadeIn 6s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .input-text input {
