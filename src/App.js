@@ -7,7 +7,7 @@ import Intro from './components/Intro';
 import Footer from './components/Footer';
 import Results from './components/Results';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,} from 'react-router-dom';
 
 function App() {
   return (
@@ -24,7 +24,9 @@ function App() {
               </>
             }
           />
-            <Route path="/Form/:questionTitle" element={<> <Header /> <MainPage /> <Footer /> </>} />
+
+          <Route path="/Form/:questionTitle" element={<> <Header /> <MainPage /> <Footer /> </>} />
+
           <Route
             path="/AboutProjContent"
             element={

@@ -415,7 +415,6 @@ main ul li {
   align-items: center;
 }
 
-.question-text,
 .explanation-text,
 .input-text,
 .formButton {
@@ -443,29 +442,40 @@ main ul li {
   }
 }
 
-.question-text {
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: 2px;
-  animation: typing 6s steps(40, 80%), blink-caret 0.75s step-end infinite;
-  animation-delay: 6s;
+.typewriter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes typing {
-  from {
+.typewriter-text {
+  font-family: Arial, sans-serif;
+  position: relative;
+  margin: 2rem auto;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  border-right: 1px solid #333;
+}
+
+.line-1 {
+  animation: type 3s 0.5s steps(30, end) forwards, blink 0.66s step-end infinite;
+}
+
+@keyframes type {
+  0% {
     width: 0;
   }
-  to {
+  100% {
     width: 100%;
   }
 }
-@keyframes blink-caret {
-  from, to {
+@keyframes blink {
+  0%, 100% {
     border-color: transparent;
   }
   50% {
-    border-color: black;
+    border-color: #333;
   }
 }
 .explanation-text, .input-text, .formButton {

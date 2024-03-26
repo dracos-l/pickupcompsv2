@@ -159,8 +159,13 @@ const MainPage = () => {
       </div>
 
       <div className="text-boxes">
+
         <div className="title-text">{currentQuestion.title}</div>
-        <div className="question-text">{currentQuestion.questionText}</div>
+
+        <div class="typewriter-wrapper" >
+          <h1 class="typewriter-text line-1">{currentQuestion.questionText}</h1>
+        </div>
+
         <div className="explanation-text">{currentQuestion.explanationText}</div>
 
         {/* Answer Box 1 */}
