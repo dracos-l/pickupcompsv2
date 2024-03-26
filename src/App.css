@@ -456,7 +456,7 @@ main ul li {
   animation: type 3s 0.4s steps(30, end) forwards, blink 0.66s step-end infinite;
   font-family: Arial, sans-serif;
   font-weight: bold;
-  font-size: 1.7vmax;
+  font-size: 1.5vmax;
   position: relative;
   margin-bottom: 20px;
   white-space: nowrap;
