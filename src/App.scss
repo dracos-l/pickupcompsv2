@@ -420,13 +420,42 @@ main {
   @include main-content;
 }
 
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.33s ease-out; // Adjust duration and easing as needed
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.33s ease-out;
+}
+
 .formContainer {
   @include main-content;
   display: flex;
   align-items: center;
   height: 100% auto; // Adjust as needed
   overflow-x: hidden;
+  //toggle opacity animnated over 3 seconds
+  opacity:0;
+  animation : fadeIn 3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  //animation
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  
 }
+
+
 
 .formImage {
   width: 50%;
@@ -457,24 +486,25 @@ main {
   font-size: 2vmax;
   font-weight: bold;
   //background color
-  background-color: $primary-color;
   color: $basically-white;
+  background-color: $primary-color;
   padding: 10px;
   border-radius: 10px;
   //move upwards
   margin-top: 20px;
   margin-bottom: 30px;
+  //animation so that background color is basically white to start then becomes primary color over 3 seconds
   animation: fadeIn 3s;
   animation-fill-mode: forwards;
-    //animation
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+  //animation
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
     }
+    to {
+      opacity: 1;
+    }
+  }
     @include buttonHover;
 }
 
@@ -615,6 +645,8 @@ main {
     }
   }
 }
+
+
 
 
 // Footer

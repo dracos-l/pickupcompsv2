@@ -365,6 +365,16 @@ main ul li {
   margin: 0 0 10px 0;
 }
 
+.visible {
+  opacity: 1;
+  transition: opacity 0.33s ease-out;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.33s ease-out;
+}
+
 .formContainer {
   padding: 20px;
   color: #333;
@@ -373,6 +383,10 @@ main ul li {
   align-items: center;
   height: 100% auto;
   overflow-x: hidden;
+  opacity: 0;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
 }
 .formContainer h1 {
   font-size: 24px;
@@ -388,6 +402,14 @@ main ul li {
 }
 .formContainer ul li {
   margin: 0 0 10px 0;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .formImage {
@@ -417,8 +439,8 @@ main ul li {
   text-align: center; /* Center-align text */
   font-size: 2vmax;
   font-weight: bold;
-  background-color: #0e476e;
   color: #ddd;
+  background-color: #0e476e;
   padding: 10px;
   border-radius: 10px;
   margin-top: 20px;
