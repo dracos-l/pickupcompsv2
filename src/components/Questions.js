@@ -81,7 +81,7 @@ export const questions = [
     },
     {
       "id": 10,
-      "title": "Perimeter",
+      "title": "Perimeter-Defense",
       "titleLink": "https://youtu.be/3cM_tUrErIg?si=n6KaL03uEqm-GN1Z",
       "questionText": "What is your volume and deterrence in Perimeter defense?",
       "explanationText": "Compared to the people you play pickup basketball against, what percentile do you think you are when it comes to how many shots you defend on the perimeter and how effective you are at stopping them? Take into account that perimeter deterrence doesn’t equal steals, but is more about how you affect scorers. Also, sometimes the best perimeter defenders are avoided and the worst defenders are targeted: though, this doesn’t always happen in pickup. (Use the visual to see what’s perimeter defense)",
