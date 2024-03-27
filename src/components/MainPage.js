@@ -30,8 +30,12 @@ const MainPage = () => {
   };
 
   const handleNextClick = () => {
+    setIsVisible(false);
+    
     // Move to the next question
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    setTimeout(() => {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    }, 500);
 
     // Reset input fields for the next question
     setFormData({
@@ -39,30 +43,35 @@ const MainPage = () => {
       answer2: '',
     });
 
-    setIsVisible(false);
+    
 
     if (isLastQuestion) navigate('/Results');
     else{
       setTimeout(() => {
         navigate(`/Form/${questions[currentQuestionIndex + 1].title}`);
         window.location.reload();
-      }, 1000);
+      }, 500);
     } 
   };
 
   const handleBackClick = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+    setIsVisible(false);
+
+    setTimeout(() => {
+      setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+    }, 500);
+    
     setFormData({
       answer1: '',
       answer2: '',
     });
 
-    setIsVisible(false);
+    
 
     setTimeout(() => {
       navigate(`/Form/${questions[currentQuestionIndex - 1].title}`);
       window.location.reload();
-    }, 1000);
+    }, 500);
 
   };
 
