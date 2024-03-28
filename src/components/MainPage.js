@@ -68,7 +68,9 @@ const MainPage = () => {
     setFormData({ answer1: '', answer2: '' });
   
     if (isLastQuestion) {
-      navigate('/Results');
+      setTimeout (() => {
+        navigate('/Results');
+      }, 500);
     } else {
       setTimeout(() => {
         navigate(`/Form/${questions[currentQuestionIndex + 1].title}`);
