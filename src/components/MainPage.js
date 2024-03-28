@@ -3,15 +3,13 @@ import { Link, useNavigate,useParams } from 'react-router-dom';
 import {questions} from './Questions';
 
 const MainPage = () => {
-
   const { questionTitle } = useParams();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
-    // Find the index of the question with the matching title
-    questions.findIndex(question => question.title === questionTitle)
+    questions.findIndex((question) => question.title === questionTitle)
   );
   const [formData, setFormData] = useState({
     answer1: '',
-    answer2: '', // Add another answer field
+    answer2: '',
   });
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -22,24 +20,47 @@ const MainPage = () => {
 
   const [isVisible, setIsVisible] = useState(true);
 
+  // Updated to enforce input constraints
   const handleInputChange = (answerNumber, value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [`answer${answerNumber}`]: value,
-    }));
+    const numberValue = Number(value);
+    if (numberValue >= 0 && numberValue <= 100 && !isNaN(numberValue)) {
+      setFormData((prevData) => ({
+        ...prevData,
+        [`answer${answerNumber}`]: value,
+      }));
+    }
   };
 
+  // Added input validation before moving to the next question or finishing
   const handleNextClick = () => {
+    // Check if both answers are valid
+    if (
+      formData.answer1 === '' ||
+      formData.answer2 === '' ||
+      isNaN(formData.answer1) ||
+      isNaN(formData.answer2) ||
+      formData.answer1 < 0 ||
+      formData.answer1 > 100 ||
+      formData.answer2 < 0 ||
+      formData.answer2 > 100
+    ) {
+      alert('Please fill both answers with numbers between 0 and 100.');
+      return;
+    }
+
     setIsVisible(false);
     
+    // Note: Convert answer values to 0-1 scale here before saving
+    const scaledAnswers = {
+      answer1: formData.answer1 / 100,
+      answer2: formData.answer2 / 100,
+    };
+
     // Save current question's answers to local storage
     const existingAnswers = JSON.parse(localStorage.getItem('formData')) || {};
     const updatedAnswers = {
       ...existingAnswers,
-      [currentQuestion.id]: {
-        answer1: formData.answer1,
-        answer2: formData.answer2,
-      },
+      [currentQuestion.id]: scaledAnswers,
     };
     localStorage.setItem('formData', JSON.stringify(updatedAnswers));
     
@@ -58,7 +79,6 @@ const MainPage = () => {
 
   const handleBackClick = () => {
     setIsVisible(false);
-
     setTimeout(() => {
       setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
     }, 500);
@@ -68,13 +88,10 @@ const MainPage = () => {
       answer2: '',
     });
 
-    
-
     setTimeout(() => {
       navigate(`/Form/${questions[currentQuestionIndex - 1].title}`);
       window.location.reload();
     }, 500);
-
   };
 
   return (

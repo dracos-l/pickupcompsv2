@@ -83,10 +83,10 @@ async function calculation(formData) {
                 'Similarity Score': (Offense + Defense) / 2,
                 'Scoring': Scoring,
                 'Playmaking': Playmaking,
-                'Oreb': Oreb,
-                'Paint': Paint,
-                'Perimeter': Perimeter,
-                'Dreb': Dreb,
+                'Offensive Rebounding': Oreb,
+                'Paint Defense': Paint,
+                'Perimeter Defense': Perimeter,
+                'Defensive Rebounding': Dreb,
                 'Offense': Offense,
                 'Defense': Defense
             };
