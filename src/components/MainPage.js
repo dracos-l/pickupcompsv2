@@ -32,27 +32,29 @@ const MainPage = () => {
   const handleNextClick = () => {
     setIsVisible(false);
     
-    // Move to the next question
-    setTimeout(() => {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    }, 500);
-
-    // Reset input fields for the next question
-    setFormData({
-      answer1: '',
-      answer2: '',
-    });
-
+    // Save current question's answers to local storage
+    const existingAnswers = JSON.parse(localStorage.getItem('formData')) || {};
+    const updatedAnswers = {
+      ...existingAnswers,
+      [currentQuestion.id]: {
+        answer1: formData.answer1,
+        answer2: formData.answer2,
+      },
+    };
+    localStorage.setItem('formData', JSON.stringify(updatedAnswers));
     
-
-    if (isLastQuestion) navigate('/Results');
-    else{
+    // Reset formData for the next question
+    setFormData({ answer1: '', answer2: '' });
+  
+    if (isLastQuestion) {
+      navigate('/Results');
+    } else {
       setTimeout(() => {
         navigate(`/Form/${questions[currentQuestionIndex + 1].title}`);
         window.location.reload();
       }, 500);
-    } 
-  };
+    }
+  };  
 
   const handleBackClick = () => {
     setIsVisible(false);

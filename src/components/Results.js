@@ -3,17 +3,18 @@ import { useLocation } from 'react-router-dom';
 import { calculation, results, highlights } from '../calcuation/calculateSimilarity';
 
 function Results() {
-    const location = useLocation();
-    const formData = location.state.formData;
-
+    // Removed useLocation since we're now using localStorage
     const [similarityScores, setSimilarityScores] = useState({});
     const [topResults, setTopResults] = useState([]);
     const [highlightResult, setHighlightResult] = useState({});
 
     useEffect(() => {
         const fetchDataAndCalculate = async () => {
-            if (formData) {
-                const similarityDic = await calculation(formData); // Ensure this is awaited
+            const storedFormData = JSON.parse(localStorage.getItem('formData'));
+            if (storedFormData) {
+                // Directly use storedFormData if calculation can handle the format
+                // Or transform it here before passing
+                const similarityDic = await calculation(storedFormData); 
                 const topResultsDic = results(similarityDic);
                 const highlight = highlights(similarityDic);
     
@@ -24,7 +25,7 @@ function Results() {
         };
     
         fetchDataAndCalculate();
-    }, [formData]);
+    }, []); // Dependency array is empty to only run once on mount
 
     return (
         <div className="results">
