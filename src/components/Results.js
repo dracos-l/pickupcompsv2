@@ -27,21 +27,28 @@ function Results() {
         fetchDataAndCalculate();
     }, []); // Dependency array is empty to only run once on mount
 
+
     return (
-        <div className="results">
-            <h1>Results</h1>
-            <h2>Top Matches</h2>
-            {topResults.map((result, index) => (
-                <div key={index}>
-                    <p>{result}</p>
+        <div className="results-container">
+            <h1 className="results-title">Results</h1>
+            <div className="content-container">
+                <div className="top-matches">
+                    <h2>Top Matches</h2>
+                    <ul className="matches-list">
+                        {topResults.map((result, index) => (
+                            <li key={index} className="match-item">{result}%</li>
+                        ))}
+                    </ul>
                 </div>
-            ))}
-            <h2>Highlight: {highlightResult.Name}</h2>
-            <div>
-                <p>Offensive Similarity: {highlightResult.Offense_value}</p>
-                <p>Defensive Similarity: {highlightResult.Defense_value}</p>
-                <p>Most Similar Stat: {highlightResult.Most_similar_value}</p>
-                <p>Least Similar Stat: {highlightResult.Least_similar_value}</p>
+                <div className="highlight-section">
+                    <h2>Highlight: {highlightResult.Name}</h2>
+                    <div className="highlight-details">
+                        <p><strong>Offensive Similarity:</strong> {highlightResult.Offense_value}%</p>
+                        <p><strong>Defensive Similarity:</strong> {highlightResult.Defense_value}%</p>
+                        <p><strong>Most Similar Stat:</strong> {highlightResult.Most_similar_value}</p>
+                        <p><strong>Least Similar Stat:</strong> {highlightResult.Least_similar_value}</p>
+                    </div>
+                </div>
             </div>
         </div>
     );

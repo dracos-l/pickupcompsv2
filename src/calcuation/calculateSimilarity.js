@@ -69,11 +69,11 @@ async function calculation(formData) {
             let Scoring = (Area + Contest + (Type * (2/3))) / (8/3);
             let Playmaking = (Math.abs(personDict['AST_PCT_percentile'] - playerDf['AST_PCT_percentile']) + 
                             Math.abs(personDict['TOV_PCT_percentile'] - playerDf['TOV_PCT_percentile'])) / 2;
-            let Oreb = Math.abs(personDict['OREB_PCT_percentile'] - playerDf['OREB_PCT_percentile']);
             let Paint = (Math.abs(personDict['Paint_defense_volume_pm_percentile'] - playerDf['Paint_defense_volume_pm_percentile']) + 
                         Math.abs(personDict['Paint_defense_deterance_percentile'] - playerDf['Paint_defense_deterance_percentile'])) / 2;
             let Perimeter = (Math.abs(personDict['Perimeter_defense_volume_pm_percentile'] - playerDf['Perimeter_defense_volume_pm_percentile']) + 
                             Math.abs(personDict['Perimeter_defense_deterance_percentile'] - playerDf['Perimeter_defense_deterance_percentile'])) / 2;
+            let Oreb = Math.abs(personDict['OREB_PCT_percentile'] - playerDf['OREB_PCT_percentile']);
             let Dreb = Math.abs(personDict['DREB_PCT_percentile'] - playerDf['DREB_PCT_percentile']);
 
             let Offense = ((Scoring * 12) + (Playmaking * 6.5) + Oreb) / 19.5;
@@ -132,8 +132,8 @@ function highlights(similarityDic) {
     // Find the key of the minimum and maximum value in the similarity1[1] dictionary
     let keyOfMinValue = Object.keys(similarity1[1]).reduce((a, b) => similarity1[1][a] < similarity1[1][b] ? a : b);
     let keyOfMaxValue = Object.keys(similarity1[1]).reduce((a, b) => similarity1[1][a] > similarity1[1][b] ? a : b);
-    dic['Most_similar_value'] = `(${keyOfMinValue}, ${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)})`;
-    dic['Least_similar_value'] = `(${keyOfMaxValue}, ${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)})`;
+    dic['Most_similar_value'] = `(${keyOfMinValue}, ${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)}%)`;
+    dic['Least_similar_value'] = `(${keyOfMaxValue}, ${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)}%)`;
     return dic;
 }
 
