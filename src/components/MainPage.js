@@ -96,22 +96,6 @@ const MainPage = () => {
     }, 500);
   };
 
-  let placeholderText1 = '';
-  let placeholderText2 = '';
-  if (currentQuestion.id === 9 || currentQuestion.id === 10) {
-    placeholderText1 = 'Volume';
-    placeholderText2 = 'Deterrence';
-  } else if (currentQuestion.id === 11) {
-    placeholderText1 = 'Assist';
-    placeholderText2 = 'Turnover';
-  } else if (currentQuestion.id === 12) {
-    placeholderText1 = 'Offensive';
-    placeholderText2 = 'Defensive';
-  } else {
-    placeholderText1 = 'Volume';
-    placeholderText2 = 'Efficiency';
-  }
-
 
   return (
     <div className={isVisible ? 'visible' : 'hidden'}>
@@ -137,7 +121,7 @@ const MainPage = () => {
             type="text"
             value={formData.answer1}
             onChange={(e) => handleInputChange(1, e.target.value)}
-            placeholder={placeholderText1}
+            placeholder={currentQuestion.placeHolderText1}
           />
         </div>
 
@@ -147,7 +131,7 @@ const MainPage = () => {
             type="text"
             value={formData.answer2}
             onChange={(e) => handleInputChange(2, e.target.value)}
-            placeholder={placeholderText2}
+            placeholder={currentQuestion.placeHolderText2}
           />
         </div>
 

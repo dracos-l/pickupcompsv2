@@ -90,14 +90,14 @@ const EditPage = () => {
                     type="text"
                     value={formData[question.id].answer1}
                     onChange={(e) => handleInputChange(question.id, 1, e.target.value)}
-                    placeholder="Volume"
+                    placeholder={question.placeHolderText1}
                     className = "editInput1"
                 />
                 <input
                     type="text"
                     value={formData[question.id].answer2}
                     onChange={(e) => handleInputChange(question.id, 2, e.target.value)}
-                    placeholder="Efficiency"
+                    placeholder={question.placeHolderText2}
                     className = "editInput2"
                 />
                 </div>

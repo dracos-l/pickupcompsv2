@@ -21,7 +21,7 @@ const AboutUsContent = () => {
             Favorite player: Jayson Tatum
             <br></br>
             <br></br>
-            Player Comp: Jayson Tatum (I swear)
+            Player Comp: Grant Williams (I cried when I got this)
 
           </h5>
 
