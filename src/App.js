@@ -7,6 +7,7 @@ import Intro from './components/Intro';
 import Footer from './components/Footer';
 import Results from './components/Results'
 import React from 'react';
+import Edit from './components/Edit';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -53,6 +54,16 @@ function App() {
               <>
                 <Header />
                 <Results />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/Edit"
+            element={
+              <>
+                <Header />
+                <Edit />
                 <Footer />
               </>
             }

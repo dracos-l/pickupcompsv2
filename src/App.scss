@@ -646,7 +646,112 @@ main {
   }
 }
 
+.results-container {
+  max-width: 1200px; /* Adjusted for a wider layout */
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+}
 
+.results-title {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.top-matches, .highlight-section {
+  flex: 1; /* Each takes equal space */
+  margin: 0 10px; /* Spacing between the two sections */
+  padding: 20px;
+  border: 1px solid #ccc; /* Optional: adds a border around each section */
+  border-radius: 5px; /* Optional: rounds corners of the border */
+}
+
+.matches-list {
+  list-style: none;
+  padding: 0;
+}
+
+.match-item {
+  background-color: #f0f0f0;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.highlight-details p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+strong {
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .top-matches, .highlight-section {
+      margin: 10px 0; /* Adjusts spacing for vertical layout */
+      width: 100%; /* Makes each section full width */
+  }
+}
+
+.editButton{
+  button{
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    //add padding
+    padding: 10px 20px;
+    //rounded
+    border-radius: 10px;
+    margin-top: 20px;
+    //size
+    width: 80px;
+    height: 40px;
+    //align center
+    @include buttonHover;
+  }
+}
+
+.editWrapper{
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+}
 
 
 // Footer

@@ -580,24 +580,21 @@ main ul li {
   color: #e74c3c;
 }
 
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 15px 0;
-}
-footer p {
-  font-size: 14px;
-  margin: 0;
-}
-
-/* Results Design */
-
 .results-container {
   max-width: 1200px; /* Adjusted for a wider layout */
   margin: auto;
   padding: 20px;
   text-align: center;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .results-title {
@@ -644,13 +641,54 @@ strong {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .content-container {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
-
   .top-matches, .highlight-section {
-      margin: 10px 0; /* Adjusts spacing for vertical layout */
-      width: 100%; /* Makes each section full width */
+    margin: 10px 0; /* Adjusts spacing for vertical layout */
+    width: 100%; /* Makes each section full width */
   }
 }
+.editButton button {
+  background-color: #0e476e;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 80px;
+  height: 40px;
+}
+.editButton button:hover {
+  background-color: #0056b3; /* Button background color on hover */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.editWrapper {
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+}
+footer p {
+  font-size: 14px;
+  margin: 0;
+}
+
 /*# sourceMappingURL=App.css.map */

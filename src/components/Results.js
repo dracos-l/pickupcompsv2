@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { calculation, results, highlights } from '../calcuation/calculateSimilarity';
 
 function Results() {
@@ -7,6 +7,9 @@ function Results() {
     const [similarityScores, setSimilarityScores] = useState({});
     const [topResults, setTopResults] = useState([]);
     const [highlightResult, setHighlightResult] = useState({});
+
+    const [isVisible, setIsVisible] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchDataAndCalculate = async () => {
@@ -27,8 +30,16 @@ function Results() {
         fetchDataAndCalculate();
     }, []); // Dependency array is empty to only run once on mount
 
+    const handleEditClick = () => {
+        setIsVisible(false);
+
+        setTimeout(() => {
+            navigate(`/Edit`);
+        }, 500);  
+    }
 
     return (
+        <div className={isVisible ? 'visible' : 'hidden'}>
         <div className="results-container">
             <h1 className="results-title">Results</h1>
             <div className="content-container">
@@ -50,6 +61,12 @@ function Results() {
                     </div>
                 </div>
             </div>
+            
+        
+            <div className = "editButton">
+                <button onClick={handleEditClick}>Edit</button>
+            </div>
+        </div>
         </div>
     );
     
