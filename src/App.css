@@ -668,6 +668,11 @@ strong {
 }
 
 .editWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-top: 20px;
+  margin-left: 20px;
   animation: fadeIn 3s;
   animation-fill-mode: forwards;
 }
@@ -678,6 +683,51 @@ strong {
   to {
     opacity: 1;
   }
+}
+.editWrapper .question-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.editWrapper .question-title {
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.editWrapper .input-container {
+  display: flex;
+  gap: 10px;
+}
+.editWrapper .editInput1, .editWrapper .editInput2 {
+  width: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.editWrapper .editInput1:hover, .editWrapper .editInput2:hover {
+  border: 3px solid #0e476e;
+}
+.editWrapper .editInput1:focus, .editWrapper .editInput2:focus {
+  border: 4px solid #0e476e;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.editWrapper button {
+  background-color: #0e476e;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  width: 80px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+.editWrapper button:hover {
+  background-color: #0056b3; /* Button background color on hover */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 footer {

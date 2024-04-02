@@ -81,23 +81,29 @@ const EditPage = () => {
   return (
     <div className={isVisible ? 'visible' : 'hidden'}>
         <div className = "editWrapper">
-        {questions.map((question) => (
-            <div key={question.id}>
-            <div>{question.title}</div>
-            <input
-                type="text"
-                value={formData[question.id].answer1}
-                onChange={(e) => handleInputChange(question.id, 1, e.target.value)}
-                placeholder="Volume"
-            />
-            <input
-                type="text"
-                value={formData[question.id].answer2}
-                onChange={(e) => handleInputChange(question.id, 2, e.target.value)}
-                placeholder="Efficiency"
-            />
-            </div>
-        ))}
+            <div className = "editQuestions">
+            {questions.map((question) => (
+                <div key={question.id} className="question-container">
+                <div className="question-title">{question.title}</div>
+                <div className="input-container">
+                <input
+                    type="text"
+                    value={formData[question.id].answer1}
+                    onChange={(e) => handleInputChange(question.id, 1, e.target.value)}
+                    placeholder="Volume"
+                    className = "editInput1"
+                />
+                <input
+                    type="text"
+                    value={formData[question.id].answer2}
+                    onChange={(e) => handleInputChange(question.id, 2, e.target.value)}
+                    placeholder="Efficiency"
+                    className = "editInput2"
+                />
+                </div>
+                </div>
+            ))}
+        </div>
         <button onClick={handleSubmit}>Submit</button>
         </div>
     </div>
