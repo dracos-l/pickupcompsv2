@@ -47,6 +47,11 @@ body {
   overflow-x: hidden;
 }
 
+.appContainer{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
 
 // Header
 header {
@@ -61,15 +66,15 @@ header {
   
   .logo {
     //size and placement centered
-    width: 32px;
+    width: 20vw;
+    max-width: 260px;
     //border
     border-radius: 2px;
-    border: 2px solid $basically-black;
-    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    border: 4px solid $primary-color;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.5);
     //padding
-    padding: 5px;
+    padding: 8px;
     //background
-    background-color: $basically-white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,13 +91,13 @@ header {
 
   .aba{
     //size and placement centered
-    width: 32px;
+    width: 65px;
     //border
     border-radius: 2px;
     border: 2px solid $basically-black;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     //padding
-    padding: 5px;
+    padding: 0px;
     //background
     background-color: $basically-white;
     display: flex;
@@ -100,7 +105,7 @@ header {
     justify-content: center;
     justify-self: flex-start;
     position:relative;
-    left: 4px;
+    left: 6px;
     border-radius: 10px;
 
 
@@ -126,18 +131,18 @@ header {
     //bold
     font-weight: bold;
     //background
-    background-color: $primary-color;
+
     //text
     text-align: center;
     font-size: 13px;
     //text color
     line-height:66px;
     //center in header
-    margin-top: 7px;
+    margin-top: 9px;
     color: $basically-white;
     //border
     border-radius: 20px;
-    border: 2px solid $basically-black;
+    border: 2px solid $primary-color;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     display: flex;
     align-items: center;
@@ -148,8 +153,7 @@ header {
 
     //hover
     &:hover {
-      background-color: $secondary-color;
-      color: #333; /* Change text color on hover */
+      @include buttonHover;
       transition: background-color 0.66s ease;
       cursor:pointer;
     }
@@ -165,7 +169,7 @@ header {
 
 
   button{
-    background-color: $primary-color;
+    background-color: $basically-black;
     color: $basically-white;
     border: none;
     padding: 10px 20px;
@@ -174,11 +178,11 @@ header {
     cursor: pointer;
     transition: background-color 0.66s ease;
     //adjust size to fill header
-    height: 40px;
+    height: 44px;
     width: 80px;
     //border
     border-radius: 20px;
-    border: 2px solid $basically-black;
+    border: 2px solid $primary-color;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     display: flex;
     align-items: center;
@@ -458,9 +462,11 @@ main {
 
 
 .formImage {
-  width: 50%;
+  width: 40%;
   text-align: center;
-  animation: fadeIn 9s;
+  margin-right: 5%;
+  margin-left: 5%;
+  animation: fadeIn 6s;
   animation-fill-mode: forwards;
   height: auto; // Adjust as needed
     //animation

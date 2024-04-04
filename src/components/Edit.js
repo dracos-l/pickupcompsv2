@@ -9,8 +9,8 @@ const EditPage = () => {
       const existingFormData = JSON.parse(localStorage.getItem('formData')) || {};
       return questions.reduce((acc, question) => {
         acc[question.id] = {
-          answer1: existingFormData[question.id]?.answer1 * 100 || '', // Multiply by 100 for display
-          answer2: existingFormData[question.id]?.answer2 * 100 || '', // Multiply by 100 for display
+          answer1: (existingFormData[question.id]?.answer1 * 100 || '').toFixed(0), // Multiply by 100 for display
+          answer2: (existingFormData[question.id]?.answer2 * 100 || '').toFixed(0), // Multiply by 100 for display
         };
         return acc;
       }, {});

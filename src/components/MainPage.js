@@ -96,12 +96,12 @@ const MainPage = () => {
     }, 500);
   };
 
-
+  
   return (
     <div className={isVisible ? 'visible' : 'hidden'}>
     <div className="formContainer">
       <div className="formImage">
-        <img src={currentQuestion.imageSrc} alt={`Question ${currentQuestion.id}`} />
+        <img src={require(`${currentQuestion.imageSrc}`)} alt={`Question ${currentQuestion.id}`} />
       </div>
 
       <div className="text-boxes">

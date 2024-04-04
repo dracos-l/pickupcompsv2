@@ -7,6 +7,12 @@ body {
   overflow-x: hidden;
 }
 
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 header {
   padding: 10px 0;
   height: 34px;
@@ -17,12 +23,12 @@ header {
   border-radius: 20px;
 }
 header .logo {
-  width: 32px;
+  width: 20vw;
+  max-width: 260px;
   border-radius: 2px;
-  border: 2px solid #333;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  background-color: #ddd;
+  border: 4px solid #0e476e;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,18 +41,18 @@ header .logo:hover {
   cursor: pointer;
 }
 header .aba {
-  width: 32px;
+  width: 65px;
   border-radius: 2px;
   border: 2px solid #333;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-  padding: 5px;
+  padding: 0px;
   background-color: #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
   justify-self: flex-start;
   position: relative;
-  left: 4px;
+  left: 6px;
   border-radius: 10px;
 }
 header .aba:hover {
@@ -63,14 +69,13 @@ header .AboutProjButton {
   width: 100px;
   height: 40px;
   font-weight: bold;
-  background-color: #0e476e;
   text-align: center;
   font-size: 13px;
   line-height: 66px;
-  margin-top: 7px;
+  margin-top: 9px;
   color: #ddd;
   border-radius: 20px;
-  border: 2px solid #333;
+  border: 2px solid #0e476e;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -79,10 +84,12 @@ header .AboutProjButton {
   position: relative;
 }
 header .AboutProjButton:hover {
-  background-color: #e74c3c;
-  color: #333; /* Change text color on hover */
   transition: background-color 0.66s ease;
   cursor: pointer;
+}
+header .AboutProjButton:hover:hover {
+  background-color: #0056b3; /* Button background color on hover */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .dropdown {
@@ -91,7 +98,7 @@ header .AboutProjButton:hover {
   padding: 5px;
 }
 .dropdown button {
-  background-color: #0e476e;
+  background-color: #333;
   color: #ddd;
   border: none;
   padding: 10px 20px;
@@ -99,10 +106,10 @@ header .AboutProjButton:hover {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.66s ease;
-  height: 40px;
+  height: 44px;
   width: 80px;
   border-radius: 20px;
-  border: 2px solid #333;
+  border: 2px solid #0e476e;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -413,9 +420,11 @@ main ul li {
 }
 
 .formImage {
-  width: 50%;
+  width: 40%;
   text-align: center;
-  animation: fadeIn 9s;
+  margin-right: 5%;
+  margin-left: 5%;
+  animation: fadeIn 6s;
   animation-fill-mode: forwards;
   height: auto;
 }
