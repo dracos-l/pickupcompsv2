@@ -137,5 +137,19 @@ function highlights(similarityDic) {
     return dic;
 }
 
+// Add this function to the end of your existing file
+function lowestSimilarityScores(similarityDic) {
+    // Find the three entries with the lowest similarity scores
+    let lowestScores = Object.entries(similarityDic)
+                            .sort((a, b) => b[1]['Similarity Score'] - a[1]['Similarity Score'])
+                            .slice(0, 3)
+                            .reduce((obj, [player, stats]) => {
+                                obj[player] = stats;
+                                return obj;
+                            }, {});
+    return lowestScores;
+}
 
-export { calculation, results, highlights };
+
+
+export { calculation, results, highlights, lowestSimilarityScores};

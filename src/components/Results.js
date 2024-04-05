@@ -59,6 +59,10 @@ function Results() {
                         <p><strong>Most Similar Stat:</strong> {highlightResult.Most_similar_value}</p>
                         <p><strong>Least Similar Stat:</strong> {highlightResult.Least_similar_value}</p>
                     </div>
+                    <br />
+                    <br />
+                    <h2>Additional Information: {highlightResult.Name}, </h2>
+                    <p className="additional-info">This section provides additional insights and context regarding the highlighted match, allowing for a deeper understanding of the similarities and differences identified in the analysis.</p>
                 </div>
             </div>
             
