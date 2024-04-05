@@ -134,22 +134,16 @@ function highlights(similarityDic) {
     let keyOfMaxValue = Object.keys(similarity1[1]).reduce((a, b) => similarity1[1][a] > similarity1[1][b] ? a : b);
     dic['Most_similar_value'] = `(${keyOfMinValue}, ${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)}%)`;
     dic['Least_similar_value'] = `(${keyOfMaxValue}, ${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)}%)`;
+
+    dic['Similarity Score'] = ((1 - similarity1[1]['Similarity Score']) * 100).toFixed(2);
+    dic['Scoring'] = ((1 - similarity1[1]['Scoring']) * 100).toFixed(2);
+    dic['Playmaking'] = ((1 - similarity1[1]['Playmaking']) * 100).toFixed(2);
+    dic['Offensive Rebounding'] = ((1 - similarity1[1]['Offensive Rebounding']) * 100).toFixed(2);
+    dic['Paint Defense'] = ((1 - similarity1[1]['Paint Defense']) * 100).toFixed(2);
+    dic['Perimeter Defense'] = ((1 - similarity1[1]['Perimeter Defense']) * 100).toFixed(2);
+    dic['Defensive Rebounding'] = ((1 - similarity1[1]['Defensive Rebounding']) * 100).toFixed(2);
+    
     return dic;
 }
 
-// Add this function to the end of your existing file
-function lowestSimilarityScores(similarityDic) {
-    // Find the three entries with the lowest similarity scores
-    let lowestScores = Object.entries(similarityDic)
-                            .sort((a, b) => b[1]['Similarity Score'] - a[1]['Similarity Score'])
-                            .slice(0, 3)
-                            .reduce((obj, [player, stats]) => {
-                                obj[player] = stats;
-                                return obj;
-                            }, {});
-    return lowestScores;
-}
-
-
-
-export { calculation, results, highlights, lowestSimilarityScores};
+export { calculation, results, highlights};
