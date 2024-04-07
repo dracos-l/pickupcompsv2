@@ -126,12 +126,12 @@ function highlights(similarityDic) {
     dic['Defense_value'] = ((1 - similarity1[1]['Defense']) * 100).toFixed(2);
 
     // Delete 'Offense' and 'Defense' from the similarity1[1] dictionary
-    delete similarity1[1]['Offense'];
-    delete similarity1[1]['Defense'];
+    const filteredKeys = Object.keys(similarity1[1]).filter(key => key !== 'Offense' && key !== 'Defense');
 
-    // Find the key of the minimum and maximum value in the similarity1[1] dictionary
-    let keyOfMinValue = Object.keys(similarity1[1]).reduce((a, b) => similarity1[1][a] < similarity1[1][b] ? a : b);
-    let keyOfMaxValue = Object.keys(similarity1[1]).reduce((a, b) => similarity1[1][a] > similarity1[1][b] ? a : b);
+    // Find the key of the minimum and maximum value in the filtered list
+    let keyOfMinValue = filteredKeys.reduce((a, b) => similarity1[1][a] < similarity1[1][b] ? a : b);
+    let keyOfMaxValue = filteredKeys.reduce((a, b) => similarity1[1][a] > similarity1[1][b] ? a : b);
+    
     dic['Most_similar_value'] = `(${keyOfMinValue}, ${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)}%)`;
     dic['Least_similar_value'] = `(${keyOfMaxValue}, ${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)}%)`;
 

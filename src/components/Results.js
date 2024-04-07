@@ -1,13 +1,79 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { calculation, results, highlights } from '../calcuation/calculateSimilarity';
+import * as d3 from 'd3'; // Make sure to import d3 like this
+
+
+function CoordinatePlane({ data }) {
+    const width = 600;
+    const height = 600;
+    const padding = 50;
+
+    // Scales adjusted to ensure axes meet at (0,0)
+    const xScale = d3.scaleLinear()
+        .domain([0, 0.5]) // Assuming 100 is the max value for Offense and Defense
+        .range([padding, width - padding]);
+
+    const yScale = d3.scaleLinear()
+        .domain([0, 0.5])
+        .range([height - padding, padding]);
+
+    useEffect(() => {
+        const svg = d3.select('.coordinate-plane-svg')
+                      .attr('width', width)
+                      .attr('height', height);
+
+        // X and Y Axis
+        svg.append('g')
+           .attr('transform', `translate(0,${height - padding})`)
+           .call(d3.axisBottom(xScale));
+
+        svg.append('g')
+           .attr('transform', `translate(${padding},0)`)
+           .call(d3.axisLeft(yScale));
+
+        // Data points with title for hover tooltip
+        const circles = svg.selectAll('circle')
+                           .data(data)
+                           .enter()
+                           .append('circle')
+                           .attr('cx', d => xScale(d.Offense))
+                           .attr('cy', d => yScale(d.Defense))
+                           .attr('r', 5)
+                           .attr('fill', 'blue');
+
+        // Append title for tooltip
+        circles.append('title')
+               .text(d => `Player: ${d.name}`);
+
+        svg.append("text")             
+            .attr("transform", `translate(${width / 2}, ${height - 10})`) // Positioning the x-axis label
+            .style("text-anchor", "middle") // Center the text
+            .text("Offense");
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)") // Rotating text for y-axis
+            .attr("y", 0) // Positioning the y-axis label
+            .attr("x", 10 - (height / 2))
+            .attr("dy", "1em") // Offset to position correctly
+            .style("text-anchor", "middle") // Center the text
+            .text("Defense");
+
+    }, [data]);
+
+    return (
+        <svg className="coordinate-plane-svg" />
+    );
+}
+
+
 
 function Results() {
     // Removed useLocation since we're now using localStorage
     const [similarityScores, setSimilarityScores] = useState({});
     const [topResults, setTopResults] = useState([]);
     const [highlightResult, setHighlightResult] = useState({});
-
+    const [playerData, setPlayerData] = useState([]);
     const [isVisible, setIsVisible] = useState(true);
     const navigate = useNavigate();
 
@@ -21,14 +87,25 @@ function Results() {
                 const topResultsDic = results(similarityDic);
                 const highlight = highlights(similarityDic);
     
+                createCoordinatePlane(similarityDic);
                 setSimilarityScores(similarityDic);
                 setTopResults(Object.entries(topResultsDic).map(([key, value]) => `${key}: ${value}`));
                 setHighlightResult(highlight);
             }
         };
+
     
         fetchDataAndCalculate();
     }, []); // Dependency array is empty to only run once on mount
+
+    function createCoordinatePlane(similarityDic) {
+        const processedData = Object.keys(similarityDic).map(name => ({
+            name: name,
+            Offense: parseFloat(similarityDic[name].Offense), // Ensure this value is a float
+            Defense: parseFloat(similarityDic[name].Defense) // Ensure this value is a float
+        }));
+        setPlayerData(processedData);
+    }
 
     const handleEditClick = () => {
         setIsVisible(false);
@@ -74,8 +151,19 @@ function Results() {
                         </p>        
                 </div>
             </div>
-            <div className = "editButton">
-                <button onClick={handleEditClick}>Edit</button>
+            <div className={isVisible ? 'visible' : 'hidden'}>
+            <div className="results-container">
+                <h1 className="results-title">Player Offensive and Defensive Percent Differences</h1>
+                <div className="content-container">
+                    {/* ... other components like Top Matches and Highlight Sections */}
+                </div>
+                {/* Coordinate Plane Visualization */}
+                <CoordinatePlane data={playerData} />
+                
+            </div>
+            </div>
+            <div className="editButton">
+                    <button onClick={handleEditClick}>Edit</button>
             </div>
         </div>
         </div>
