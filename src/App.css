@@ -745,6 +745,38 @@ strong {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
+.results-container {
+  display: flex;
+  flex-direction: column; /* Aligns children (header, content-container, edit button) vertically */
+  align-items: center; /* Centers them horizontally */
+}
+
+.content-container {
+  display: flex;
+  width: 100%; /* Ensures it takes the full width of its parent */
+  justify-content: space-around; /* Distributes space evenly around the top-matches and highlight-section */
+  gap: 20px; /* Optional: adds space between the two sections */
+}
+
+.top-matches, .highlight-section {
+  flex: 1; /* This makes both sections take up equal space */
+  display: flex;
+  flex-direction: column; /* Aligns their children vertically */
+  align-items: center; /* Centers the children horizontally */
+}
+
+/* Additional styles to ensure consistency and readability */
+.top-matches ul, .highlight-details {
+  width: 100%; /* Ensures the lists use the full width of their containers */
+}
+.highlight-section .section-divider {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  margin: 20px 0 !important; /* Use !important sparingly */
+}
+
+
 footer {
   background-color: #333;
   color: #fff;

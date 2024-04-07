@@ -61,12 +61,19 @@ function Results() {
                     </div>
                     <br />
                     <br />
+                    <br />
+                    <hr className="section-divider" /> 
+                    <br />
+                    <br />
+                    <br />
                     <h2>Additional Information: {highlightResult.Name}, </h2>
-                    <p className="additional-info">This section provides additional insights and context regarding the highlighted match, allowing for a deeper understanding of the similarities and differences identified in the analysis.</p>
+                        <p className="additional-info"> 
+                            When look offense, your scoring game was {highlightResult.Scoring}%, playmaking was {highlightResult.Playmaking}%, and offensive rebounding was {highlightResult['Offensive Rebounding']}%. 
+                            On to your defense, your paint defense was {highlightResult['Paint Defense']}%, perimeter defense was {highlightResult['Perimeter Defense']}%, and defensive rebounding was {highlightResult['Defensive Rebounding']}%. 
+                            Overall, we calculated that you were {highlightResult['Similarity Score']}% similar to {highlightResult.Name}.
+                        </p>        
                 </div>
             </div>
-            
-        
             <div className = "editButton">
                 <button onClick={handleEditClick}>Edit</button>
             </div>
