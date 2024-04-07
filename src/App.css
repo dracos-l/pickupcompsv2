@@ -707,7 +707,8 @@ strong {
 }
 .editWrapper .input-container {
   display: flex;
-  gap: 10px;
+  position: fixed;
+  left: 270px;
 }
 .editWrapper .editInput1, .editWrapper .editInput2 {
   width: 100%;
@@ -721,6 +722,9 @@ strong {
 .editWrapper .editInput1:focus, .editWrapper .editInput2:focus {
   border: 4px solid #0e476e;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.editWrapper .editInput2 {
+  margin-left: 25px;
 }
 .editWrapper button {
   background-color: #0e476e;

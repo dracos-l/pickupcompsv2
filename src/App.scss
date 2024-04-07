@@ -778,7 +778,8 @@ strong {
   }
   .input-container {
     display: flex;
-    gap: 10px;
+    position: fixed;
+    left: 270px;
     
   }
   .editInput1, .editInput2{
@@ -795,6 +796,10 @@ strong {
       //shadow
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
     }
+  }
+  
+  .editInput2{
+    margin-left: 25px;
   }
   
   
