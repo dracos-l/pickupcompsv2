@@ -47,12 +47,6 @@ body {
   overflow-x: hidden;
 }
 
-.appContainer{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; 
-}
-
 // Header
 header {
   padding: 10px 0;
@@ -427,7 +421,7 @@ main {
     background-color: $primary-color;
     color: #fff;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     //add padding
@@ -435,7 +429,7 @@ main {
     //rounded
     border-radius: 10px;
     //size
-    width: 160px;
+    width: 180px;
     height: 40px;
     //align center
     display: block;
@@ -456,6 +450,7 @@ main {
   }
 
   h2{
+    max-width: 70%;
     //fade in animation
     animation: fadeIn 3s;
     animation-fill-mode: forwards;

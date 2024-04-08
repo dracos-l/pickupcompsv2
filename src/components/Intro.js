@@ -19,9 +19,7 @@ function Intro() {
   return (
     <div class = "intro">
       <main>
-        <section>
-          <h2>Introduction Video</h2>
-          {/* Replace the src attribute with your video's embed URL */}
+          <h2>Welcome! Be sure to watch the walkthrough video below:</h2>
           <div class="video">
             <iframe
                 width="560"
@@ -33,7 +31,6 @@ function Intro() {
                 allowfullscreen
             ></iframe>
           </div>
-        </section>
         <div className = "introButtons">
         <Link to="/Form/Paint" style={{textDecoration:'none'}}>
           <button class="startButton" > Start New Form </button>

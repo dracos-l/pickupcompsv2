@@ -7,12 +7,6 @@ body {
   overflow-x: hidden;
 }
 
-.appContainer {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 header {
   padding: 10px 0;
   height: 34px;
@@ -355,12 +349,12 @@ main ul li {
   background-color: #0e476e;
   color: #fff;
   border: none;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   padding: 10px 20px;
   border-radius: 10px;
-  width: 160px;
+  width: 180px;
   height: 40px;
   display: block;
   margin-top: 20px;
@@ -380,6 +374,7 @@ main ul li {
   }
 }
 .intro h2 {
+  max-width: 70%;
   animation: fadeIn 3s;
   animation-fill-mode: forwards;
 }
