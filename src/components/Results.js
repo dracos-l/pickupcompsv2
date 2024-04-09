@@ -152,11 +152,8 @@ function Results() {
                 </div>
             </div>
             <div className={isVisible ? 'visible' : 'hidden'}>
-            <div className="results-container">
-                <h1 className="results-title">Player Offensive and Defensive Percent Differences</h1>
-                <div className="content-container">
-                    {/* ... other components like Top Matches and Highlight Sections */}
-                </div>
+            <div className="data-container">
+                <h1 className="data-title">Player Offensive and Defensive Percent Differences</h1>
                 {/* Coordinate Plane Visualization */}
                 <CoordinatePlane data={playerData} />
                 

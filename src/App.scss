@@ -468,6 +468,7 @@ main {
 
 .results{
   @include main-content;
+  z-index:-1;
 }
 
 
@@ -699,7 +700,7 @@ main {
 }
 
 .results-container {
-  max-width: 1200px; /* Adjusted for a wider layout */
+  max-width: 85%; /* Adjusted for a wider layout */
   margin: auto;
   padding: 20px;
   text-align: center;

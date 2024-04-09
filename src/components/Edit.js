@@ -110,6 +110,13 @@ const EditPage = () => {
         </div>
         <button onClick={handleSubmit}>Submit</button>
         </div>
+        <style>
+            {`
+                body {
+                    overflow: hidden;
+                }
+            `}
+        </style>
     </div>
   );
 };

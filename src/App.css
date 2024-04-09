@@ -391,6 +391,7 @@ main ul li {
   padding: 20px;
   color: #333;
   background-color: #ddd;
+  z-index: -1;
 }
 .results h1 {
   font-size: 24px;
@@ -626,7 +627,7 @@ main ul li {
 }
 
 .results-container {
-  max-width: 1200px; /* Adjusted for a wider layout */
+  max-width: 85%; /* Adjusted for a wider layout */
   margin: auto;
   padding: 20px;
   text-align: center;
