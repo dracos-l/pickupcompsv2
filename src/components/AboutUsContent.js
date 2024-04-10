@@ -34,13 +34,13 @@ const AboutUsContent = () => {
             Bigger Celtics and basketball analytics fan than Logan.
             <br></br>
             <br></br>
-            I am currently wokring as Operation Data Analyst Intern at MoneyLion, a fintech bank in NYC.
+            I am currently working as a Technology Operations Analyst at Arcesium
             <br></br>
             <br></br>
             Favorite player: Jayson Tatum
             <br></br>
             <br></br>
-            Player Comp: Jaden McDaniels
+            Player Comp: Jalen Suggs 
           </h5>
         </ul>  
 
