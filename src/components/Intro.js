@@ -4,17 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Intro() {
   const navigate = useNavigate();
-  const [hasBeenClicked, setHasBeenClicked] = useState(false);
-
-  const handleEditClick = () => {
-    if(!hasBeenClicked){
-      alert("Notice: You are skipping to the edit page. If this is your first time using this form, please click 'Start New Form' instead.");
-      setHasBeenClicked(true);
-    }
-    else{
-      navigate(`/Edit`);
-    }
-  };
 
   return (
     <div class = "intro">
@@ -35,7 +24,9 @@ function Intro() {
         <Link to="/Form/Paint" style={{textDecoration:'none'}}>
           <button class="startButton" > Start New Form </button>
         </Link>
-          <button class="editButton" onClick={handleEditClick}> Edit Existing Form </button>
+        <Link to="/Edit" style={{textDecoration:'none'}}>
+          <button class="editButton"> Edit Existing Form </button>
+        </Link>
         </div>
       </main>
     </div>
