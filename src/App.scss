@@ -771,6 +771,14 @@ strong {
   }
 }
 
+.data-container{
+  max-width: 90%;
+}
+
+.coordinate-plane-svg{
+  max-inline-size: 90%;
+}
+
 .editButton{
   button{
     background-color: $primary-color;

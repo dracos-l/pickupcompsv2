@@ -695,6 +695,14 @@ strong {
     width: 100%; /* Makes each section full width */
   }
 }
+.data-container {
+  max-width: 90%;
+}
+
+.coordinate-plane-svg {
+  max-inline-size: 90%;
+}
+
 .editButton button {
   background-color: #0e476e;
   color: #fff;
