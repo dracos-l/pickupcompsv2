@@ -76,9 +76,13 @@ async function calculation(formData) {
             let Oreb = Math.abs(personDict['OREB_PCT_percentile'] - playerDf['OREB_PCT_percentile']);
             let Dreb = Math.abs(personDict['DREB_PCT_percentile'] - playerDf['DREB_PCT_percentile']);
 
-            let Offense = ((Scoring * 12) + (Playmaking * 6.5) + Oreb) / 19.5;
-            let Defense = ((Paint * 8.5) + (Perimeter * 8.5) + (Dreb * 2.5)) / 19.5;
-            console.log(typeof Offense, typeof Defense, typeof Scoring, typeof Playmaking, typeof Oreb, typeof Paint, typeof Perimeter, typeof Dreb);
+            let Offense = ((Scoring * 12.5) + (Playmaking * 5.5) + Oreb) / 19;
+            let Defense = ((Paint * 8) + (Perimeter * 8) + (Dreb * 3)) / 19;
+            // 4.1(Paint_s) + 4.1(Midrange) + 2.05(Corner) + 2.05(Above) + 6.2(Open) + 6.2(Tight) + 4.1(Catch) + 4.1(Pull) + 14.5(Play) + 21.1(Paint_d) + 21.1(Per_d) + 2.6(Oreb) + 7.9(Dreb)
+            // 12.3(Area) + 12.4(Contest) + 8.2(Type) + 14.5(Play) + 21.1(Paint_d) + 21.1(Per_d) + 2.6(Oreb) + 7.9(Dreb)
+            // 32.9(Scoring) + 14.5(Play) + 21.1(Paint_d) + 21.1(Per_d) + 2.6(Oreb) + 7.9(Dreb)
+            // 50(Offense) + 50(Defense)
+
             let playerStats = {
                 'Similarity Score': (Offense + Defense) / 2,
                 'Scoring': Scoring,

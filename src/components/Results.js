@@ -139,9 +139,8 @@ function Results() {
                     <br />
                     <br />
                     <br />
+                    <br />
                     <hr className="section-divider" /> 
-                    <br />
-                    <br />
                     <br />
                     <h2>Additional Information: {highlightResult.Name}, </h2>
                         <p className="additional-info"> 
@@ -149,6 +148,9 @@ function Results() {
                             On to your defense, your paint defense was {highlightResult['Paint Defense']}%, perimeter defense was {highlightResult['Perimeter Defense']}%, and defensive rebounding was {highlightResult['Defensive Rebounding']}%. 
                             Overall, we calculated that you were {highlightResult['Similarity Score']}% similar to {highlightResult.Name}.
                         </p>        
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
             <div className={isVisible ? 'visible' : 'hidden'}>
