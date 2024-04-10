@@ -4,7 +4,7 @@ const AboutProjContent = () => {
   return (
     <div class='about'>
         <h1>About Project Page</h1>
-        <h2>Philosophy</h2>
+        <h3>Philosophy</h3>
         <p>
           From a philosphical standpoint, our goal was to take the debate you have at the courts about who you play like more serious level than anyone has before us.
           Other website that compare you to NBA players are buzz-feed style quizzes that are fun but not very accurate. 
@@ -13,7 +13,7 @@ const AboutProjContent = () => {
           We wanted to take a data-driven approach to this question. Our goal was to answer questions hoopers would actually know about there game but that were also relevant in differentiating between play styles, strengths and weaknesses.
           We guarentee that if you are genuiely honest about your game, we can give you a more accurate list of players you play like than any other website in the world.
         </p>
-        <h2>How it Works</h2>
+        <h3>How it Works</h3>
         <p>
           Instead of asking absolute questions like how many shots you took and what was your three point percentage, we ask relative questions about how you compare to other players you play against.
           The best way to think about it is out of the ten players you play against, how do you rank among them in specific asepcts of basketball.
@@ -25,9 +25,9 @@ const AboutProjContent = () => {
           After you answer all the questions, we compare you to every player in the NBA, that qualified to be in our dataset based on games and minutes played, by taking your absolute distance from them in each category.
           We then sum these distances and take the weighted average to get a similarity score. 
         </p>
-        <h2>Front-End</h2>
+        <h3>Front-End</h3>
         <p>The front-end is honestly the easiest part. I just used Chat GPT to pick the prettiest colors</p>
-        <h2>Back-End</h2>
+        <h3>Back-End</h3>
         <p>
           The back-end connects to an API that scraped all of NBA.com’s stats from their website. 
           Using this API, I compiled a file of all relevant stats for every player that qualified and converted this to percentiles on where they ranked for each stat. 
