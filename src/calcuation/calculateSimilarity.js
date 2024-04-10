@@ -45,8 +45,8 @@ function transformFormData(formData) {
 async function calculation(formData) {
     let personDict = transformFormData(formData);
     let similarityDic = {};
-    const playersDf = await loadAndParseCSV('/player_data.csv');
-    console.log(typeof playersDf, playersDf);
+    const playersDf = await loadAndParseCSV('/V2_player_data.csv');
+    //console.log(typeof playersDf, playersDf);
     if (playersDf) {
         playersDf.forEach(playerDf => {
             let Area = ((Math.abs(personDict['Paint_volume_pm_percentile'] - playerDf['Paint_volume_pm_percentile']) + 
@@ -78,7 +78,7 @@ async function calculation(formData) {
 
             let Offense = ((Scoring * 12) + (Playmaking * 6.5) + Oreb) / 19.5;
             let Defense = ((Paint * 8.5) + (Perimeter * 8.5) + (Dreb * 2.5)) / 19.5;
-
+            console.log(typeof Offense, typeof Defense, typeof Scoring, typeof Playmaking, typeof Oreb, typeof Paint, typeof Perimeter, typeof Dreb);
             let playerStats = {
                 'Similarity Score': (Offense + Defense) / 2,
                 'Scoring': Scoring,
@@ -96,7 +96,7 @@ async function calculation(formData) {
     } else {
         console.error("Players dataframe is not loaded.");
     }
-    console.log(similarityDic);
+    //console.log(similarityDic);
     return similarityDic;
 
 
@@ -109,7 +109,7 @@ function results(similarityDic) {
                              .slice(0, 10);
     similarity10.forEach((item, index) => {
         // Use player's name and adjust the similarity score
-        console.log(item[0], item[1]['Similarity Score']);
+        // console.log(item[0], item[1]['Similarity Score']);
         let adjustedScore = (1 - item[1]['Similarity Score']) * 100;
         dic[item[0]] = adjustedScore.toFixed(2); // Round to two decimal places
     });
@@ -146,4 +146,4 @@ function highlights(similarityDic) {
     return dic;
 }
 
-export { calculation, results, highlights};
+export {calculation, results, highlights};

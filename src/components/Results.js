@@ -11,11 +11,11 @@ function CoordinatePlane({ data }) {
 
     // Scales adjusted to ensure axes meet at (0,0)
     const xScale = d3.scaleLinear()
-        .domain([0, 0.5]) // Assuming 100 is the max value for Offense and Defense
+        .domain([0, 1]) // Assuming 100 is the max value for Offense and Defense
         .range([padding, width - padding]);
 
     const yScale = d3.scaleLinear()
-        .domain([0, 0.5])
+        .domain([0, 1])
         .range([height - padding, padding]);
 
     useEffect(() => {
