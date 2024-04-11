@@ -3,6 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { calculation, results, highlights } from '../calcuation/calculateSimilarity';
 import * as d3 from 'd3'; // Make sure to import d3 like this
 
+function getOrdinalSuffix(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j === 1 && k !== 11) {
+        return "st";
+    }
+    if (j === 2 && k !== 12) {
+        return "nd";
+    }
+    if (j === 3 && k !== 13) {
+        return "rd";
+    }
+    return "th";
+}
 
 function CoordinatePlane({ data }) {
     const width = 800;
@@ -60,11 +74,11 @@ function CoordinatePlane({ data }) {
         circles.append('title')
             .text(d => 
                 `Player: ${d.name}\n` +
-                `Similarity Score: ${d['Similarity Score'] ? d['Similarity Score'].toFixed(2) : 'N/A'}\n` +
-                `Similarity Score Rank: ${d['Similarity Score_rank'] || 'N/A'}\n` +
-                `Offense: ${d.Offense ? d.Offense.toFixed(2) : 'N/A'}\n` +
+                `Overall Distance: ${d['Similarity Score'] ? d['Similarity Score'].toFixed(2) : 'N/A'}\n` +
+                `Overall Rank: ${d['Similarity Score_rank'] || 'N/A'}\n` +
+                `Offense Distnace: ${d.Offense ? d.Offense.toFixed(2) : 'N/A'}\n` +
                 `Offense Rank: ${d.Offense_rank || 'N/A'}\n` +
-                `Defense: ${d.Defense ? d.Defense.toFixed(2) : 'N/A'}\n` +
+                `Defense Distance: ${d.Defense ? d.Defense.toFixed(2) : 'N/A'}\n` +
                 `Defense Rank: ${d.Defense_rank || 'N/A'}\n` 
             );
                 // + `Scoring: ${d.Scoring ? d.Scoring.toFixed(2) : 'N/A'}\n` +
@@ -164,8 +178,8 @@ function Results() {
                 <div className="highlight-section">
                     <h2>Highlight: {highlightResult.Name}</h2>
                     <div className="highlight-details">
-                        <p><strong>Offensive Similarity:</strong> ({highlightResult.Offense_value}%, {highlightResult.Offense_rank}th)</p>
-                        <p><strong>Defensive Similarity:</strong> ({highlightResult.Defense_value}%, {highlightResult.Defense_rank}th)</p>
+                        <p><strong>Offensive Similarity:</strong> ({highlightResult.Offense_value}%, {highlightResult.Offense_rank}{getOrdinalSuffix(highlightResult.Offense_rank)})</p>
+                        <p><strong>Defensive Similarity:</strong> ({highlightResult.Defense_value}%, {highlightResult.Defense_rank}{getOrdinalSuffix(highlightResult.Defense_rank)})</p>
                         <p><strong>Most Similar Stat:</strong> {highlightResult.Most_similar_value}</p>
                         <p><strong>Least Similar Stat:</strong> {highlightResult.Least_similar_value}</p>
                     </div>
@@ -176,13 +190,13 @@ function Results() {
                     <br />
                     <h2>Additional Information: {highlightResult.Name}, </h2>
                         <p className="additional-info"> 
-                            When looking at offense, {highlightResult.Name}'s scoring game was {highlightResult.Scoring}% similar and the {highlightResult.Scoring_rank}th most similar overall to yours.
-                            Playmaking was {highlightResult.Playmaking}% similar and the {highlightResult.Playmaking_rank}th most similar overall. Lastly, offensive rebounding was {highlightResult['Offensive Rebounding']}% similar and the {highlightResult['Offensive Rebounding_rank']}th most similar overall. 
-                            On to your defense, {highlightResult.Name}'s paint defense was {highlightResult['Paint Defense']}% similar and the {highlightResult['Paint Defense_rank']}th most similar overall to yours.
-                            Perimeter defense was {highlightResult['Perimeter Defense']}% similar and the {highlightResult['Perimeter Defense_rank']}th most similar overall.
-                            And finally, defensive rebounding was {highlightResult['Defensive Rebounding']}% similar and the {highlightResult['Defensive Rebounding_rank']}th similar overall. 
+                            When looking at offense, {highlightResult.Name}'s scoring game was {highlightResult.Scoring}% similar and the {highlightResult.Scoring_rank}{getOrdinalSuffix(highlightResult.Scoring_rank)} most similar overall to yours.
+                            Playmaking was {highlightResult.Playmaking}% similar and the {highlightResult.Playmaking_rank}{getOrdinalSuffix(highlightResult.Playmaking_rank)} most similar overall. Lastly, offensive rebounding was {highlightResult['Offensive Rebounding']}% similar and the {highlightResult['Offensive Rebounding_rank']}{getOrdinalSuffix(highlightResult['Offensive Rebounding_rank'])} most similar overall. 
+                            On to your defense, {highlightResult.Name}'s paint defense was {highlightResult['Paint Defense']}% similar and the {highlightResult['Paint Defense_rank']}{getOrdinalSuffix(highlightResult['Paint Defense_rank'])} most similar overall to yours.
+                            Perimeter defense was {highlightResult['Perimeter Defense']}% similar and the {highlightResult['Perimeter Defense_rank']}{getOrdinalSuffix(highlightResult['Perimeter Defense_rank'])} most similar overall.
+                            And finally, defensive rebounding was {highlightResult['Defensive Rebounding']}% similar and the {highlightResult['Defensive Rebounding_rank']}{getOrdinalSuffix(highlightResult['Defensive Rebounding_rank'])} similar overall. 
                             Overall, we calculated that you were {highlightResult['Similarity Score']}% similar to {highlightResult.Name}.
-                        </p>        
+                        </p>      
                 </div>
             </div>
             <div className={isVisible ? 'visible' : 'hidden'}>

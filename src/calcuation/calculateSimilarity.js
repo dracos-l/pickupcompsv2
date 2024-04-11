@@ -142,8 +142,12 @@ function highlights(similarityDic) {
     let keyOfMinValue = filteredKeys.reduce((a, b) => similarity1[1][a] < similarity1[1][b] ? a : b);
     let keyOfMaxValue = filteredKeys.reduce((a, b) => similarity1[1][a] > similarity1[1][b] ? a : b);
     
-    dic['Most_similar_value'] = `${keyOfMinValue} - (${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)}%, ${similarity1[1][`${keyOfMinValue}_rank`]}th)`;
-    dic['Least_similar_value'] = `${keyOfMaxValue} - (${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)}%, ${similarity1[1][`${keyOfMaxValue}_rank`]}th)`;
+    let minValueSuffix = getOrdinalSuffix(similarity1[1][`${keyOfMinValue}_rank`]);
+    let maxValueSuffix = getOrdinalSuffix(similarity1[1][`${keyOfMaxValue}_rank`]);
+
+    dic['Most_similar_value'] = `${keyOfMinValue} - (${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)}%, ${similarity1[1][`${keyOfMinValue}_rank`]}${minValueSuffix})`;
+    dic['Least_similar_value'] = `${keyOfMaxValue} - (${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)}%, ${similarity1[1][`${keyOfMaxValue}_rank`]}${maxValueSuffix})`;
+
 
     dic['Similarity Score'] = ((1 - similarity1[1]['Similarity Score']) * 100).toFixed(2);
     dic['Scoring'] = ((1 - similarity1[1]['Scoring']) * 100).toFixed(2);
@@ -193,6 +197,21 @@ function assignRanksToStats(similarityDic) {
             similarityDic[item.name][`${stat}_rank`] = item.rank;
         });
     });
+}
+
+function getOrdinalSuffix(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j === 1 && k !== 11) {
+        return "st";
+    }
+    if (j === 2 && k !== 12) {
+        return "nd";
+    }
+    if (j === 3 && k !== 13) {
+        return "rd";
+    }
+    return "th";
 }
 
 export {calculation, results, highlights};
