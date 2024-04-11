@@ -100,10 +100,9 @@ async function calculation(formData) {
     } else {
         console.error("Players dataframe is not loaded.");
     }
-    //console.log(similarityDic);
+    assignRanksToStats(similarityDic);
+    console.log(similarityDic);
     return similarityDic;
-
-
 }
 
 function results(similarityDic) {
@@ -130,14 +129,21 @@ function highlights(similarityDic) {
     dic['Defense_value'] = ((1 - similarity1[1]['Defense']) * 100).toFixed(2);
 
     // Delete 'Offense' and 'Defense' from the similarity1[1] dictionary
-    const filteredKeys = Object.keys(similarity1[1]).filter(key => key !== 'Offense' && key !== 'Defense');
+    // List of base stats for which rankings are calculated
+    const baseStats = ['Similarity Score','Scoring', 'Playmaking', 'Offensive Rebounding', 'Paint Defense', 'Perimeter Defense', 'Defensive Rebounding'];
+
+    // Constructing the exclusion list, including 'Offense', 'Defense', and all *_rank keys
+    const exclusionList = ['Offense', 'Defense', ...baseStats.map(stat => `${stat}_rank`), 'Offense_rank', 'Defense_rank'];
+
+    // Filter out the keys you want to exclude
+    const filteredKeys = Object.keys(similarity1[1]).filter(key => !exclusionList.includes(key));
 
     // Find the key of the minimum and maximum value in the filtered list
     let keyOfMinValue = filteredKeys.reduce((a, b) => similarity1[1][a] < similarity1[1][b] ? a : b);
     let keyOfMaxValue = filteredKeys.reduce((a, b) => similarity1[1][a] > similarity1[1][b] ? a : b);
     
-    dic['Most_similar_value'] = `(${keyOfMinValue}, ${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)}%)`;
-    dic['Least_similar_value'] = `(${keyOfMaxValue}, ${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)}%)`;
+    dic['Most_similar_value'] = `${keyOfMinValue} - (${((1 - similarity1[1][keyOfMinValue]) * 100).toFixed(2)}%, ${similarity1[1][`${keyOfMinValue}_rank`]}th)`;
+    dic['Least_similar_value'] = `${keyOfMaxValue} - (${((1 - similarity1[1][keyOfMaxValue]) * 100).toFixed(2)}%, ${similarity1[1][`${keyOfMaxValue}_rank`]}th)`;
 
     dic['Similarity Score'] = ((1 - similarity1[1]['Similarity Score']) * 100).toFixed(2);
     dic['Scoring'] = ((1 - similarity1[1]['Scoring']) * 100).toFixed(2);
@@ -146,8 +152,47 @@ function highlights(similarityDic) {
     dic['Paint Defense'] = ((1 - similarity1[1]['Paint Defense']) * 100).toFixed(2);
     dic['Perimeter Defense'] = ((1 - similarity1[1]['Perimeter Defense']) * 100).toFixed(2);
     dic['Defensive Rebounding'] = ((1 - similarity1[1]['Defensive Rebounding']) * 100).toFixed(2);
+    dic['Offense_rank'] = similarity1[1]['Offense_rank'];
+    dic['Defense_rank'] = similarity1[1]['Defense_rank'];
+    dic['Scoring_rank'] = similarity1[1]['Scoring_rank'];
+    dic['Playmaking_rank'] = similarity1[1]['Playmaking_rank'];
+    dic['Offensive Rebounding_rank'] = similarity1[1]['Offensive Rebounding_rank'];
+    dic['Paint Defense_rank'] = similarity1[1]['Paint Defense_rank'];
+    dic['Perimeter Defense_rank'] = similarity1[1]['Perimeter Defense_rank'];
+    dic['Defensive Rebounding_rank'] = similarity1[1]['Defensive Rebounding_rank']
     
     return dic;
+}
+
+function assignRanksToStats(similarityDic) {
+    const stats = ['Similarity Score', 'Offense', 'Defense', 'Scoring', 'Playmaking', 'Offensive Rebounding', 'Paint Defense', 'Perimeter Defense', 'Defensive Rebounding'];
+
+    stats.forEach(stat => {
+        // Extract scores and names into an array
+        let scores = Object.keys(similarityDic).map(playerName => ({
+            name: playerName,
+            score: similarityDic[playerName][stat]
+        }));
+
+        // Sort by score in ascending order
+        scores.sort((a, b) => a.score - b.score);
+
+        // Assign ranks, considering ties
+        let currentRank = 1;
+        for (let i = 0; i < scores.length; i++) {
+            if (i > 0 && scores[i].score === scores[i - 1].score) {
+                scores[i].rank = scores[i - 1].rank;
+            } else {
+                scores[i].rank = currentRank;
+            }
+            currentRank++;
+        }
+
+        // Update similarityDic with ranks
+        scores.forEach(item => {
+            similarityDic[item.name][`${stat}_rank`] = item.rank;
+        });
+    });
 }
 
 export {calculation, results, highlights};
