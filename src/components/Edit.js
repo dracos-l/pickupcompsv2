@@ -108,8 +108,9 @@ const EditPage = () => {
                 </div>
             ))}
         </div>
-        <button onClick={handleSubmit}>Submit</button>
+        
         </div>
+        <button class = "editButtonSubmit" onClick={handleSubmit}>Submit</button>
         <style>
             {`
                 body {

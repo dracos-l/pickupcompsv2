@@ -196,7 +196,7 @@ header .AboutProjButton:hover:hover {
 .popup-modal h3 {
   font-size: 36px; /* Font size for the heading */
   margin-bottom: 10px; /* Spacing below the heading */
-  color: #ddd;
+  color: white;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   text-align: center;
 }
@@ -271,25 +271,64 @@ main ul li {
   margin: 0 0 10px 0;
 }
 
-.about {
+.aboutWrapper {
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.aboutWrapper h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  color: #333;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.aboutWrapper .about {
   padding: 20px;
   color: #333;
   background-color: #ddd;
 }
-.about h1 {
+.aboutWrapper .about h1 {
   font-size: 24px;
   margin: 0 0 20px 0;
 }
-.about p {
+.aboutWrapper .about p {
   font-size: 16px;
   margin: 0 0 20px 0;
 }
-.about ul {
+.aboutWrapper .about ul {
   list-style: none;
   margin: 0 0 20px 0;
 }
-.about ul li {
+.aboutWrapper .about ul li {
   margin: 0 0 10px 0;
+}
+.aboutWrapper .about p {
+  line-height: 1.3;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 18px;
+}
+.aboutWrapper .about h3 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #ddd;
+  background-color: #0e476e;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .easter {
@@ -727,6 +766,7 @@ strong {
   align-items: left;
   margin-top: 20px;
   margin-left: 20px;
+  margin-right: 20%;
   animation: fadeIn 3s;
   animation-fill-mode: forwards;
 }
@@ -742,6 +782,7 @@ strong {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  margin-right: 40%;
 }
 .editWrapper .question-title {
   margin-right: 20px;
@@ -752,6 +793,8 @@ strong {
   display: flex;
   position: fixed;
   left: 270px;
+  margin-right: 40%;
+  min-width: 100px;
 }
 .editWrapper .editInput1, .editWrapper .editInput2 {
   width: 100%;
@@ -769,23 +812,38 @@ strong {
 .editWrapper .editInput2 {
   margin-left: 25px;
 }
-.editWrapper button {
+
+.editButtonSubmit {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: #0e476e;
   color: #fff;
   border: none;
   font-size: 16px;
-  text-align: center;
-  margin: 0 auto;
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 10px;
   width: 80px;
   height: 40px;
-  margin-bottom: 20px;
+  display: block;
+  margin-top: 20px;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
 }
-.editWrapper button:hover {
+.editButtonSubmit:hover {
   background-color: #0056b3; /* Button background color on hover */
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 footer {
