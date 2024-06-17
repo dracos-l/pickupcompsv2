@@ -34,14 +34,14 @@ const AboutProjContent = () => {
           </p>
           <h3>Front-End</h3>
           <p> 
-            I (Logan) created our frontend using React with <a href="https://dracos-l.github.io/Pickup_Comps/">react-router-dom</a> for routing, <a href="https://sass-lang.com">sass</a> for styling, and a few other small things for certain functionalities on the webpage, such as Modal and various hooks. <br/> <br/>
+            I (Logan) created our frontend using React with <a href="https://www.npmjs.com/package/react-router-dom" target="_blank">react-router-dom</a> for routing, <a href="https://sass-lang.com" target="_blank">sass</a> for styling, and a few other small things for certain functionalities on the webpage, such as Modal and various hooks. <br/> <br/>
             There were many times I wanted to get much fancier with the styling and animations, but I had to remind myself (and Ethan had to remind me) that the main goal of the website was to be informative and easy to use. Our guiding philosophy was to make this website as direct and clear as possible, so I had to keep the design simple. <br/> <br/>
             Being one of the first times I've designed a website, there were many issues with spacing, flexboxes, dropdown menus, and more that I had to learn on the fly. If you've never designed a website from scratch before, you'd be surprised at how long it takes to make everything look good on any size screen. <br/> <br/>
-            I'm proud of the final product, and as we continue to come back to this website to improve both the front and back end, I'm sure I'll be able to make it even better. After all, this is only version 2 (see version 1 <a href= "https://dracos-l.github.io/Pickup_Comps/">here</a> (<b>WARNING: It is ugly and much worse than this version</b>)). <br/>
+            I'm proud of the final product, and as we continue to improve both the front and back end, I'm sure I'll be able to make it even better. After all, this is only version 2! (see version 1 <a href= "https://dracos-l.github.io/Pickup_Comps/" target="_blank">here</a> (<b>WARNING: It is ugly and much worse than this version</b>)) <br/>
           </p>
           <h3>Back-End</h3>
           <p>
-            The back-end connects to an API that scraped all of NBA.com’s stats from their website, link here: link[HYPERLINK]. 
+            The back-end connects to an API that scraped all of NBA.com’s stats from their website, link here: <a href = "https://github.com/swar/nba_api" target="_blank">NBA API github</a>. 
             Using this API, I compiled a file of all relevant stats for every player that qualified and converted this to percentiles on where they ranked for each stat. 
             I then created a JS file with functions that our react website could use in order to calculate a display of the top ten players the users are similar too and specific highlights like what categories the user and top player had most and least in common.
           </p>
