@@ -189,6 +189,7 @@ header {
   }
 
   .dropdown-menu{
+    z-index: 5;
     background-color: $basically-white;
     font-family: $font-family;
     opacity: 0.9;
@@ -202,9 +203,9 @@ header {
     position: fixed;
     top: 54px;
     right:  0;
+    border-radius: 15px;
     animation: fadeIn 0.66s;
     animation-fill-mode: forwards;
-    border-radius: 15px;
     //animation
     @keyframes fadeIn {
       from {

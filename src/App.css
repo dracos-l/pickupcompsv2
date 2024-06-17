@@ -117,6 +117,7 @@ header .AboutProjButton:hover:hover {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 .dropdown .dropdown-menu {
+  z-index: 5;
   background-color: #ddd;
   font-family: Arial, sans-serif;
   opacity: 0.9;
@@ -128,9 +129,9 @@ header .AboutProjButton:hover:hover {
   position: fixed;
   top: 54px;
   right: 0;
+  border-radius: 15px;
   animation: fadeIn 0.66s;
   animation-fill-mode: forwards;
-  border-radius: 15px;
 }
 @keyframes fadeIn {
   from {
