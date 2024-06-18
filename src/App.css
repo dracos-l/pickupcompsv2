@@ -468,7 +468,7 @@ main ul li {
   height: 100% auto;
   overflow-x: hidden;
   opacity: 0;
-  animation: fadeIn 3s;
+  animation: fadeIn 2s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
 }
@@ -501,7 +501,7 @@ main ul li {
   text-align: center;
   margin-right: 5%;
   margin-left: 5%;
-  animation: fadeIn 6s;
+  animation: fadeIn 4s;
   animation-fill-mode: forwards;
   height: auto;
 }
@@ -531,7 +531,7 @@ main ul li {
   border-radius: 10px;
   margin-top: 20px;
   margin-bottom: 30px;
-  animation: fadeIn 3s;
+  animation: fadeIn 2s;
   animation-fill-mode: forwards;
 }
 @keyframes fadeIn {
@@ -565,7 +565,7 @@ main ul li {
   display: flex;
   justify-content: center;
   white-space: nowrap;
-  animation: fadeIn 3s;
+  animation: fadeIn 2s;
   animation-fill-mode: forwards;
 }
 @keyframes fadeIn {
@@ -606,7 +606,7 @@ main ul li {
   }
 }
 .explanation-text, .input-text, .formButton {
-  animation: fadeIn 6s;
+  animation: fadeIn 4s;
   animation-fill-mode: forwards;
 }
 @keyframes fadeIn {

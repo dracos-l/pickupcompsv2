@@ -543,7 +543,7 @@ main {
   overflow-x: hidden;
   //toggle opacity animnated over 3 seconds
   opacity:0;
-  animation : fadeIn 3s;
+  animation : fadeIn 2s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   //animation
@@ -566,7 +566,7 @@ main {
   text-align: center;
   margin-right: 5%;
   margin-left: 5%;
-  animation: fadeIn 6s;
+  animation: fadeIn 4s;
   animation-fill-mode: forwards;
   height: auto; // Adjust as needed
     //animation
@@ -600,7 +600,7 @@ main {
   margin-top: 20px;
   margin-bottom: 30px;
   //animation so that background color is basically white to start then becomes primary color over 3 seconds
-  animation: fadeIn 3s;
+  animation: fadeIn 2s;
   animation-fill-mode: forwards;
   //animation
   @keyframes fadeIn {
@@ -634,7 +634,7 @@ main {
   display: flex;
   justify-content: center;
   white-space: nowrap;
-  animation: fadeIn 3s;
+  animation: fadeIn 2s;
   animation-fill-mode: forwards;
     //animation
     @keyframes fadeIn {
@@ -682,7 +682,7 @@ main {
 }
 
 .explanation-text,.input-text,.formButton {
-  animation: fadeIn 6s;
+  animation: fadeIn 4s;
   animation-fill-mode: forwards;
     //animation
     @keyframes fadeIn {
