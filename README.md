@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Player Comparison Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Welcome to our Player Comparison Website! This project, developed by Logan (Head of Frontend) and Ethan (Head of Backend), aims to provide users with a more accurate comparison to NBA players based on their own basketball skills and playing style. Unlike other comparison sites that rely on trivial questions, our site uses a data-driven approach to offer meaningful and precise player comparisons.
 
-In the project directory, you can run:
+## Philosophy
 
-### `npm start`
+### The Concept
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Our primary goal was to elevate the debate about player comparison to a more serious level than anyone has before. Most websites that compare you to NBA players are fun but not very accurate, often using unrelated questions such as your favorite color or food.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+We wanted to focus on the real aspects of your game, asking questions that are relevant in differentiating between play styles, strengths, and weaknesses. Our approach ensures that if you are genuinely honest about your game, we can provide a more accurate list of players than any other website.
 
-### `npm test`
+### Philosophical Issues
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We faced several philosophical challenges, the most significant being that pickup basketball is different from the NBA. Concepts like spacing and defensive schemes are less prevalent in casual games. This difference raised questions about the relevance of certain data points, such as pick-and-roll efficiency or height adjustments.
 
-### `npm run build`
+Another major challenge was framing questions in a way that encourages objective self-assessment. We spent countless hours debating how to perfect our method to ensure that our comparisons are meaningful and accurate.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How It Works
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Instead of asking absolute questions like your shooting percentage, we ask relative questions about how you compare to other players you play against. We break the game down into 12 categories and ask two questions per category, focusing on volume and efficiency.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After answering all the questions, we compare you to every player in our NBA dataset. We calculate your similarity to each player based on your answers, providing a ranked list of the top ten players you are most similar to, along with highlights of your strengths and weaknesses.
 
-### `npm run eject`
+## Front-End
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The front-end, developed by Logan, uses React with [react-router-dom](https://www.npmjs.com/package/react-router-dom) for routing and [Sass](https://sass-lang.com) for styling. Despite the temptation to create fancy designs and animations, we prioritized simplicity and clarity to make the website informative and easy to use.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Designing this website was a learning experience, especially in dealing with issues like spacing, flexboxes, and dropdown menus. The final product is something we are proud of, and we look forward to further improvements in future versions.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+You can see version 1 [here](https://dracos-l.github.io/Pickup_Comps/) (**WARNING: It is ugly and much worse than this version**).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Back-End
 
-## Learn More
+The back-end, developed by Ethan, connects to an API that scrapes NBA stats from [NBA.com](https://github.com/swar/nba_api). We compiled relevant stats for every player and converted these to percentiles, ranking each stat. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Using these stats, we created functions that our React frontend can use to calculate and display the top ten players users are similar to, highlighting the specific categories where users and their top comparison have the most and least in common.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Conclusion
 
-### Code Splitting
+We are excited to share our project with you and believe it offers a unique and accurate way to compare your basketball skills to those of NBA players. We hope you enjoy using it and find the comparisons insightful.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Thank you for visiting!
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Logan & Ethan
