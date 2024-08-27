@@ -165,6 +165,7 @@ function highlights(similarityDic) {
     dic['Perimeter Defense_rank'] = similarity1[1]['Perimeter Defense_rank'];
     dic['Defensive Rebounding_rank'] = similarity1[1]['Defensive Rebounding_rank']
     
+    console.log(dic)
     return dic;
 }
 
