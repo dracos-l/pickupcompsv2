@@ -824,12 +824,25 @@ strong {
   }
 }
 
-.data-container{
-  max-width: 90%;
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;  // Make sure the container takes up the full width
+  max-width: 1200px; // You can adjust this based on your layout needs
+  box-sizing: border-box; // Ensures padding doesn't affect the width
 }
 
-.coordinate-plane-svg{
-  max-inline-size: 90%;
+.coordinate-plane-svg {
+  max-width: 100%; // Make sure the SVG scales responsively
+  width: auto; // Ensure the width adjusts based on the content
+  height: auto; // Ensure the height adjusts based on the content
+  display: block; // Makes sure the SVG is treated as a block element
+  margin: 0 auto; // Centers the SVG horizontally
 }
 
 .editButton{

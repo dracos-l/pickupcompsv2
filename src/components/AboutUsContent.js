@@ -28,16 +28,16 @@ const AboutUsContent = () => {
           <li>Head Backend Developer: Ethan Waggoner</li>
           {/* paragraph description */}
           <h5>  
-            Currently a Data Science and Business Economics student at the University of Chicago
+            Currently a Data Science and Business Economics Major at the University of Chicago
             <br></br>
             <br></br>
-            Bigger Celtics and basketball analytics fan than Logan.
+            Bigger Basketball Analytics and Celtics fan than Logan.
             <br></br>
             <br></br>
             I am currently working as a Technology Operations Analyst at Arcesium
             <br></br>
             <br></br>
-            Favorite player: Jayson Tatum
+            Favorite player: Jayson Tatum (NBA Champion)
             <br></br>
             <br></br>
             Player Comp: Jalen Suggs 

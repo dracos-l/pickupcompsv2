@@ -25,7 +25,7 @@ function CoordinatePlane({ data }) {
 
     // Scales adjusted to ensure axes meet at (0,0)
     const xScale = d3.scaleLinear()
-        .domain([0, 1]) // Assuming 100 is the max value for Offense and Defense
+        .domain([0, 1])
         .range([padding, width - padding]);
 
     const yScale = d3.scaleLinear()
@@ -34,70 +34,95 @@ function CoordinatePlane({ data }) {
 
     useEffect(() => {
         const svg = d3.select('.coordinate-plane-svg')
-                      .attr('width', width)
-                      .attr('height', height);
+            .attr('width', width)
+            .attr('height', height);
+
+        // Clear previous elements (if any) to prevent duplicates on re-render
+        svg.selectAll('*').remove();
 
         // X and Y Axis
         svg.append('g')
-           .attr('transform', `translate(0,${height - padding})`)
-           .call(d3.axisBottom(xScale));
+            .attr('transform', `translate(0,${height - padding})`)
+            .call(d3.axisBottom(xScale));
 
         svg.append('g')
-           .attr('transform', `translate(${padding},0)`)
-           .call(d3.axisLeft(yScale));
+            .attr('transform', `translate(${padding},0)`)
+            .call(d3.axisLeft(yScale));
 
-        // Data points with title for hover tooltip
-        const circles = svg.selectAll('circle')
-                   .data(data)
-                   .enter()
-                   .append('circle')
-                   .attr('cx', d => xScale(d.Offense))
-                   .attr('cy', d => yScale(d.Defense))
-                   .attr('r', 5)
-                   .attr('fill', '#0056b3') // Lighter fill color
-                   .style('stroke', 'grey') // Initial lighter stroke
-                   .style('stroke-width', '1px') // Initial thin stroke width
-                   .on('mouseover', function (d, i) {
-                       d3.select(this)
-                         .attr('fill', '#e74c3c') // Highlight color on hover
-                         .style('stroke', 'black') // Darker stroke on hover
-                         .style('stroke-width', '2px'); // Thicker stroke on hover
-                   })
-                   .on('mouseout', function (d, i) {
-                       d3.select(this)
-                         .attr('fill', '#0056b3') // Revert fill color
-                         .style('stroke', 'grey') // Revert stroke color
-                         .style('stroke-width', '1px') // Revert stroke width
-                   });
+        // Tooltip
+        const tooltip = d3.select('body').append('div')
+            .attr('class', 'tooltip')
+            .style('position', 'absolute')
+            .style('background-color', 'white')
+            .style('padding', '5px')
+            .style('border', '1px solid black')
+            .style('border-radius', '5px')
+            .style('pointer-events', 'none')
+            .style('opacity', 0);
 
-        // Append title for tooltip
-        circles.append('title')
-            .text(d => 
-                `Player: ${d.name}\n` +
-                `Overall Distance: ${d['Similarity Score'] ? d['Similarity Score'].toFixed(2) : 'N/A'}\n` +
-                `Overall Rank: ${d['Similarity Score_rank'] || 'N/A'}\n` +
-                `Offense Distnace: ${d.Offense ? d.Offense.toFixed(2) : 'N/A'}\n` +
-                `Offense Rank: ${d.Offense_rank || 'N/A'}\n` +
-                `Defense Distance: ${d.Defense ? d.Defense.toFixed(2) : 'N/A'}\n` +
-                `Defense Rank: ${d.Defense_rank || 'N/A'}\n` 
-            );
-                // + `Scoring: ${d.Scoring ? d.Scoring.toFixed(2) : 'N/A'}\n` +
-                //`Scoring Rank: ${d.Scoring_rank || 'N/A'}\n` +
-                //`Playmaking: ${d.Playmaking ? d.Playmaking.toFixed(2) : 'N/A'}\n` +
-                //`Playmaking Rank: ${d.Playmaking_rank || 'N/A'}\n` +
-                //`Offensive Rebounding: ${d['Offensive Rebounding'] ? d['Offensive Rebounding'].toFixed(2) : 'N/A'}\n` +
-                //`Offensive Rebounding Rank: ${d['Offensive Rebounding_rank'] || 'N/A'}\n` +
-                //`Paint Defense: ${d['Paint Defense'] ? d['Paint Defense'].toFixed(2) : 'N/A'}\n` +
-                //`Paint Defense Rank: ${d['Paint Defense_rank'] || 'N/A'}\n` +
-                //`Perimeter Defense: ${d['Perimeter Defense'] ? d['Perimeter Defense'].toFixed(2) : 'N/A'}\n` +
-                //`Perimeter Defense Rank: ${d['Perimeter Defense_rank'] || 'N/A'}\n` +
-                //`Defensive Rebounding: ${d['Defensive Rebounding'] ? d['Defensive Rebounding'].toFixed(2) : 'N/A'}\n` +
-                //`Defensive Rebounding Rank: ${d['Defensive Rebounding_rank'] || 'N/A'}`
+        // Data points with hover effects and tooltip
+        svg.selectAll('circle')
+            .data(data)
+            .enter()
+            .append('circle')
+            .attr('cx', d => xScale(d.Offense))
+            .attr('cy', d => yScale(d.Defense))
+            .attr('r', 5)
+            .attr('fill', '#0056b3') // Lighter fill color
+            .style('stroke', 'grey') // Initial lighter stroke
+            .style('stroke-width', '1px') // Initial thin stroke width
+            .on('mouseover', function (event, d) {
+                d3.select(this)
+                    .attr('fill', '#e74c3c') // Highlight color on hover
+                    .style('stroke', 'black') // Darker stroke on hover
+                    .style('stroke-width', '2px'); // Thicker stroke on hover
 
-        svg.append("text")             
+                tooltip.transition().duration(200).style('opacity', 0.95);
+                tooltip.html(
+                    `<strong>Player: ${d.name}</strong><br/><br/>` +
+                    `Overall Percent Difference: ${d['Similarity Score'] ? (d['Similarity Score'] * 100).toFixed(0) + '%' : 'N/A'}<br/>` +
+                    `Overall Similarity Rank: ${d['Similarity Score_rank'] || 'N/A'}<br/><br/>` +
+                    `Offense Percent Difference: ${d.Offense ? (d.Offense * 100).toFixed(0) + '%' : 'N/A'}<br/>` +
+                    `Offense Similarity Rank: ${d.Offense_rank || 'N/A'}<br/><br/>` +
+                    `Defense Percent Difference: ${d.Defense ? (d.Defense * 100).toFixed(0) + '%' : 'N/A'}<br/>` +
+                    `Defense Similarity Rank: ${d.Defense_rank || 'N/A'}`
+                )                
+                .style('left', (event.pageX + 10) + 'px')
+                .style('top', (event.pageY - 28) + 'px');
+            })
+            .on('mouseout', function () {
+                d3.select(this)
+                    .attr('fill', '#0056b3') // Revert fill color
+                    .style('stroke', 'grey') // Revert stroke color
+                    .style('stroke-width', '1px'); // Revert stroke width
+
+                tooltip.transition().duration(100).style('opacity', 0);
+            });
+        
+        svg.append('circle')
+            .attr('cx', xScale(0))
+            .attr('cy', yScale(0))
+            .attr('r', 7)
+            .attr('fill', '#ffa500') // A different color for "You"
+            .style('stroke', 'black')
+            .style('stroke-width', '2px')
+            .on('mouseover', function (event) {
+                tooltip.transition().duration(200).style('opacity', 0.95);
+                tooltip.html(
+                    `<strong>Player: You</strong><br/><br/>` +
+                    `Overall Percent Difference: 0%<br/>`
+                )
+                .style('left', (event.pageX + 10) + 'px')
+                .style('top', (event.pageY - 28) + 'px');
+            })
+            .on('mouseout', function () {
+                tooltip.transition().duration(100).style('opacity', 0);
+            });
+
+        svg.append("text")
             .attr("transform", `translate(${width / 2}, ${height - 10})`) // Positioning the x-axis label
             .style("text-anchor", "middle") // Center the text
-            .text("Offense");
+            .text("Offensive Difference (%)");
 
         svg.append("text")
             .attr("transform", "rotate(-90)") // Rotating text for y-axis
@@ -105,7 +130,11 @@ function CoordinatePlane({ data }) {
             .attr("x", 10 - (height / 2))
             .attr("dy", "1em") // Offset to position correctly
             .style("text-anchor", "middle") // Center the text
-            .text("Defense");
+            .text("Defensive Difference (%)");
+
+        return () => {
+            tooltip.remove(); // Clean up the tooltip on unmount
+        };
 
     }, [data]);
 
@@ -201,7 +230,7 @@ function Results() {
             </div>
             <div className={isVisible ? 'visible' : 'hidden'}>
             <div className="data-container">
-                <h1 className="data-title">Player Offensive and Defensive Percent Differences</h1>
+                <h1 className="data-title">NBA Players' Offensive and Defensive Percent Differences from You</h1>
                 {/* Coordinate Plane Visualization */}
                 <CoordinatePlane data={playerData} />
             </div>
