@@ -4,7 +4,6 @@ const AboutUsContent = () => {
   return (
     <div class="scrollable-content">
 
-        <p>Developers:</p>
         <ul>
           <li>Head Frontend Developer: Logan Dracos</li>
           {/* paragraph description */}

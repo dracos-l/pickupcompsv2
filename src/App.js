@@ -20,7 +20,9 @@ function App() {
             element={
               <>
                 <Header />
-                <Intro />
+                <div class="content">
+                  <Intro />
+                </div>
                 <Footer />
               </>
             }
@@ -33,7 +35,9 @@ function App() {
             element={
               <>
                 <Header />
-                <AboutProjContent />
+                <div class="content">
+                  <AboutProjContent />
+                </div>
                 <Footer />
               </>
             }
@@ -43,7 +47,9 @@ function App() {
             element={
               <>
                 <Header />
-                <EasterEgg />
+                <div class="content">
+                  <EasterEgg />
+                </div>
                 <Footer />
               </>
             }
@@ -53,7 +59,9 @@ function App() {
             element={
               <>
                 <Header />
-                <Results />
+                <div class="content">
+                  <Results />
+                </div>
                 <Footer />
               </>
             }
@@ -63,7 +71,9 @@ function App() {
             element={
               <>
                 <Header />
-                <Edit />
+                <div class="content">
+                  <Edit />
+                </div>
                 <Footer />
               </>
             }
