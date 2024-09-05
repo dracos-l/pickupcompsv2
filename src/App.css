@@ -34,6 +34,7 @@ header .logo {
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
   padding: 8px;
   display: flex;
+  left: 6vw;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -424,7 +425,7 @@ main ul li {
   }
 }
 .intro h2 {
-  font-size: clamp(12px, 4vw, 36px);
+  font-size: clamp(12px, 4vw, 30px);
   animation: fadeIn 3s;
   animation-fill-mode: forwards;
 }
