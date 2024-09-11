@@ -1,14 +1,40 @@
+import { csvParse } from 'd3';
+
 async function loadAndParseCSV(filePath) {
     const response = await fetch(filePath);
-    const csvText = await response.text();
-    const lines = csvText.split('\n').map(line => line.trim()).filter(line => line);
-    const headers = lines.shift().split(',');
-    return lines.map(line => {
-        const values = line.split(',');
-        return headers.reduce((obj, header, index) => {
-            obj[header] = values[index];
-            return obj;
-        }, {});
+    const data = await response.text();
+
+    // Check the raw output after parsing
+    console.log(csvParse(data));
+
+    return csvParse(data, function(player) {
+        return {
+            full_name: player.full_name.trim(),
+            Paint_volume_pm_percentile: parseFloat(player.Paint_volume_pm_percentile),
+            Paint_efficiency_percentile: parseFloat(player.Paint_efficiency_percentile),
+            Midrange_volume_pm_percentile: parseFloat(player.Midrange_volume_pm_percentile),
+            Midrange_efficiency_percentile: parseFloat(player.Midrange_efficiency_percentile),
+            Corner_volume_pm_percentile: parseFloat(player.Corner_volume_pm_percentile),
+            Corner_efficiency_percentile: parseFloat(player.Corner_efficiency_percentile),
+            Above_the_break_volume_pm_percentile: parseFloat(player.Above_the_break_volume_pm_percentile),
+            Above_the_break_efficiency_percentile: parseFloat(player.Above_the_break_efficiency_percentile),
+            Tight_volume_pm_percentile: parseFloat(player.Tight_volume_pm_percentile),
+            Tight_efficiency_percentile: parseFloat(player.Tight_efficiency_percentile),
+            Open_volume_pm_percentile: parseFloat(player.Open_volume_pm_percentile),
+            Open_efficiency_percentile: parseFloat(player.Open_efficiency_percentile),
+            Catch_and_Shoot_Volume_percentile: parseFloat(player.Catch_and_Shoot_Volume_percentile),
+            Catch_and_Shoot_Efficiency_percentile: parseFloat(player.Catch_and_Shoot_Efficiency_percentile),
+            Pull_up_Volume_percentile: parseFloat(player.Pull_up_Volume_percentile),
+            Pull_up_Efficiency_percentile: parseFloat(player.Pull_up_Efficiency_percentile),
+            Paint_defense_volume_pm_percentile: parseFloat(player.Paint_defense_volume_pm_percentile),
+            Paint_defense_deterance_percentile: parseFloat(player.Paint_defense_deterance_percentile),
+            Perimeter_defense_volume_pm_percentile: parseFloat(player.Perimeter_defense_volume_pm_percentile),
+            Perimeter_defense_deterance_percentile: parseFloat(player.Perimeter_defense_deterance_percentile),
+            AST_PCT_percentile: parseFloat(player.AST_PCT_percentile),
+            TOV_PCT_percentile: parseFloat(player.TOV_PCT_percentile),
+            OREB_PCT_percentile: parseFloat(player.OREB_PCT_percentile),
+            DREB_PCT_percentile: parseFloat(player.DREB_PCT_percentile),
+        };
     });
 }
 
@@ -45,10 +71,11 @@ function transformFormData(formData) {
 async function calculation(formData) {
     let personDict = transformFormData(formData);
     let similarityDic = {};
-    const playersDf = await loadAndParseCSV('/V2_player_data.csv');
-    //console.log(typeof playersDf, playersDf);
+    const playersDf = await loadAndParseCSV('/V3_reordered.csv');
+    console.log(playersDf);
     if (playersDf) {
         playersDf.forEach(playerDf => {
+            // Calculate similarity as before using the player data
             let Area = ((Math.abs(personDict['Paint_volume_pm_percentile'] - playerDf['Paint_volume_pm_percentile']) + 
                             Math.abs(personDict['Paint_efficiency_percentile'] - playerDf['Paint_efficiency_percentile']) + 
                             Math.abs(personDict['Midrange_volume_pm_percentile'] - playerDf['Midrange_volume_pm_percentile']) + 
@@ -78,10 +105,6 @@ async function calculation(formData) {
 
             let Offense = ((Scoring * 12.5) + (Playmaking * 5.5) + Oreb) / 19;
             let Defense = ((Paint * 8) + (Perimeter * 8) + (Dreb * 3)) / 19;
-            // 4.1(Paint_s) + 4.1(Midrange) + 2.05(Corner) + 2.05(Above) + 6.2(Open) + 6.2(Tight) + 4.1(Catch) + 4.1(Pull) + 14.5(Play) + 21.1(Paint_d) + 21.1(Per_d) + 2.6(Oreb) + 7.9(Dreb)
-            // 12.3(Area) + 12.4(Contest) + 8.2(Type) + 14.5(Play) + 21.1(Paint_d) + 21.1(Per_d) + 2.6(Oreb) + 7.9(Dreb)
-            // 32.9(Scoring) + 14.5(Play) + 21.1(Paint_d) + 21.1(Per_d) + 2.6(Oreb) + 7.9(Dreb)
-            // 50(Offense) + 50(Defense)
 
             let playerStats = {
                 'Similarity Score': (Offense + Defense) / 2,
@@ -101,7 +124,6 @@ async function calculation(formData) {
         console.error("Players dataframe is not loaded.");
     }
     assignRanksToStats(similarityDic);
-    console.log(similarityDic);
     return similarityDic;
 }
 
@@ -165,7 +187,6 @@ function highlights(similarityDic) {
     dic['Perimeter Defense_rank'] = similarity1[1]['Perimeter Defense_rank'];
     dic['Defensive Rebounding_rank'] = similarity1[1]['Defensive Rebounding_rank']
     
-    console.log(dic)
     return dic;
 }
 
