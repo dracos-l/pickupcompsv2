@@ -13,7 +13,7 @@ function Intro() {
             <iframe
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/PcRjJ1PDYJs?si=MzPB7P0LQCqRFCAU"
+                src={require(`./videos/Intro_Video.mp4`)}
                 title="Embedded Video"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
