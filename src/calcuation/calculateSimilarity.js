@@ -71,7 +71,7 @@ function transformFormData(formData) {
 async function calculation(formData) {
     let personDict = transformFormData(formData);
     let similarityDic = {};
-    const playersDf = await loadAndParseCSV('/V3_reordered.csv');
+    const playersDf = await loadAndParseCSV('/V3_player_data.csv');
     console.log(playersDf);
     if (playersDf) {
         playersDf.forEach(playerDf => {
