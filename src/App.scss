@@ -1,0 +1,1024 @@
+// Variables
+$primary-color: #0e476e;
+$secondary-color: #e74c3c;
+$basically-white: #ddd;
+$basically-black: #333;
+$font-family: Arial, sans-serif;
+
+@mixin main-content {
+  padding: 20px;
+  //text and background color
+  color: $basically-black;
+  background-color: $basically-white;
+  //h, p, and ul styled
+  h1 {
+    font-size: 24px;
+    margin: 0 0 20px 0;
+  }
+  p {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+  }
+  ul {
+    list-style: none;
+    margin: 0 0 20px 0;
+
+    li {
+      margin: 0 0 10px 0;
+    }
+  }
+}
+
+@mixin buttonHover{
+  &:hover {
+    background-color: #0056b3; /* Button background color on hover */
+    //shadow
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  }
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* The minimum height is the full viewport */
+}
+
+.content{
+  flex-grow:1;
+}
+
+// Global styles
+body {
+  font-family: $font-family;
+  background-color: $basically-white;
+  color: $basically-black;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+// Header
+header {
+  padding: 10px 0;
+  //size
+  height: 3.5vw;
+  max-height: 36px;
+  display: flex;
+  align-items: center; /* Vertically center align items */
+  justify-content: space-between;
+  background-color: $basically-black;
+  
+  .logo {
+    //size and placement centered
+    width: clamp(60px, 20vw, 240px);
+    //border
+    border-radius: 2px;
+    border: 4px solid $primary-color;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.5);
+    //padding
+    padding: 8px;
+    //background
+    display: flex;
+    left: 6vw;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px;
+
+
+    &:hover {
+      background-color: $secondary-color;
+      color: #333; /* Change text color on hover */
+      transition: background-color 0.66s ease;
+      cursor:pointer;
+    }
+  }
+
+  .aba{
+    //size and placement centered
+    width: clamp(20px,10vw, 60px);
+    //border
+    border-radius: 2px;
+    border: 2px solid $basically-black;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    //padding
+    padding: 0px;
+    //background
+    background-color: $basically-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-start;
+    position:relative;
+    left: 6px;
+    border-radius: 10px;
+
+
+    &:hover {
+      background-color: $secondary-color;
+      color: #333; /* Change text color on hover */
+      transition: background-color 0.66s ease;
+      cursor:pointer;
+    }
+  }
+
+  nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .AboutProjButton{
+    width: 15vw;
+    height: 6vw;
+    max-width: 150px;
+    max-height:36px;
+    font-weight: bold;
+    text-align: center;
+    font-size: clamp(3pt, 1.5vw, 12pt);
+    //text color
+    line-height:66px;
+    //center in header
+    vertical-align: bottom;
+    color: $basically-white;
+    //border
+    border-radius: 20px;
+    border: 2px solid $primary-color;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-start;
+    position: relative;
+
+
+    //hover
+    &:hover {
+      @include buttonHover;
+      transition: background-color 0.66s ease;
+      cursor:pointer;
+    }
+  }
+}
+
+.dropdown-container{
+  position:relative;
+  display: inline-block;
+}
+
+.dropdown {
+  color: $basically-black;
+  display:flex;
+  padding: 3px 5px;
+
+  button{
+    background-color: $basically-black;
+    color: $basically-white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.66s ease;
+    //adjust size to fill header
+    width: clamp(40px, 15vw, 75px);
+    height: clamp(24px, 7vw, 48px);
+    //border
+    border-radius: 20px;
+    border: 2px solid $primary-color;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: flex-start;
+
+    @include buttonHover;
+  }
+
+  .dropdown-menu{
+    z-index: 5;
+    background-color: $basically-white;
+    font-family: $font-family;
+    opacity: 0.9;
+    width: clamp(80px, 15vw, 160px);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    //no bullets
+    list-style-type: none;
+    //no space where the bullets were
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    border-radius: 15px;
+    animation: fadeIn 0.66s;
+    animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+
+    li {
+      text-align: center;
+      border: 0px solid #ddd;
+      margin: 0;
+      padding: clamp(4px, 2vw, 10px) clamp(6px, 5vw, 12px);
+      font-size: clamp(8px, 2vw, 16px);
+    }
+
+    li:hover {
+      background-color: $secondary-color;
+      color: #333; /* Change text color on hover */
+      transition: background-color 0.66s ease;
+      border-radius: 20px;
+      cursor:pointer;
+    }
+    
+    a {
+      color: black;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      
+    }
+  }
+}
+
+.popup-modal{
+  position: fixed;
+  width: 60%;
+  height: 75%;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  background-color: rgba(0,0,0,0.9);
+  z-index: 1;
+
+  padding: 10px; /* Padding inside the popup box */
+  margin: 0 auto; /* Center the popup box horizontally */
+  //border
+  border-radius: 10px;
+  border: 2px solid $basically-black;
+  box-shadow: 0 0 50px 0 rgba(0,0,0,0.5);
+  overflow-y: auto;
+  //fade in on opening
+  animation: fadeIn 0.66s;
+  animation-fill-mode: forwards;
+  //animation
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .popup-content{
+    //have all text and button centered
+     /* Enable vertical scrolling when content overflows */
+     //flexbox and center
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $basically-white;
+  }
+
+  h3 {
+    font-size: clamp(24px, 4vw, 36px); /* Font size for the heading */
+    margin-bottom: 10px; /* Spacing below the heading */
+    color: white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    //align center
+    text-align: center;
+  }
+
+  li{
+    //align on the right
+    text-align: left;
+    //no bullets
+    list-style-type: none;
+    //padding
+    padding: 0px;
+    font-size: clamp(14px, 2vw, 20px);
+  }
+
+  h5{
+    //indent slightly and reduce padding
+    padding-left: 20px;
+    //align left
+    text-align: left;
+    font-size: clamp(12px, 1.5vw, 16px);
+    //some padding between each line of text
+    padding-bottom: 20px;
+  }
+
+  button{
+    @include buttonHover();
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    font-size: clamp(12px, 1.5vw, 16px);
+    align-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    //add padding
+    padding: 10px 20px;
+    //rounded
+    border-radius: 10px;
+    //size
+    width: clamp(60px, 10vw, 80px);
+    height: clamp(30px, 5vw, 40px);
+    //align center
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+
+
+
+*:focus {
+  outline: none;
+}
+
+.linkedIn{
+  width:40px;
+}
+.github{
+  width:40px;
+}
+
+
+
+// Main Page
+main {
+  @include main-content;
+}
+
+//AboutProj Page
+
+  .aboutWrapper{
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+  //animation
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  h1{
+    //center text
+    text-align: center;
+    //bold
+    font-weight: bold;
+    //more styling
+    font-size: 30px;
+    //background color
+    color: $basically-black;
+    padding: 10px;
+    border-radius: 10px;
+    //move upwards
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .about {
+    @include main-content;
+    p {
+        //space between lines within paragraph
+        line-height: 1.3;
+        margin-left: 5%;
+        margin-right: 5%;
+        font-size: 18px;
+    }
+    h3{
+      //center text
+      text-align: center;
+      //bold
+      font-weight: bold;
+      //more styling
+      font-size: 20px;
+      //background color
+      color: $basically-white;
+      background-color: $primary-color;
+      padding: 10px;
+      border-radius: 10px;
+      //move upwards
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+//EasterEgg Page
+.easter{
+  @include main-content;
+}
+
+//Intro Component
+.intro{
+  .video {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    border-radius: 20px;
+    animation: fadeIn 6s;
+    animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .video iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  .introButtons{
+    //flex space side by side
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 0 auto;
+    //center of page
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  button{
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    //add padding
+    padding: 10px 20px;
+    //rounded
+    border-radius: 10px;
+    //align center
+    display: block;
+    //move button down
+    margin-top: 20px;
+    @include buttonHover;
+    animation: fadeIn 3s;
+    animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  h2{
+    font-size: clamp(12px, 4vw, 30px);
+    //fade in animation
+    animation: fadeIn 3s;
+    animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  
+    p {
+        //space between lines within paragraph
+        line-height: 1.3;
+        margin-left: 5%;
+        margin-right: 5%;
+        font-size: 18px;
+    }
+    h3{
+      //center text
+      text-align: center;
+      //bold
+      font-weight: bold;
+      //more styling
+      font-size: 20px;
+      //background color
+      color: $basically-white;
+      background-color: $primary-color;
+      padding: 10px;
+      border-radius: 10px;
+      //move upwards
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+}
+
+.results{
+  @include main-content;
+  z-index:-1;
+}
+
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.33s ease-out; // Adjust duration and easing as needed
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.33s ease-out;
+}
+
+.formContainer {
+  @include main-content;
+  display: flex;
+  align-items: center;
+  height: 100vh; // Adjust as needed
+  overflow-x: hidden;
+  //toggle opacity animnated over 3 seconds
+  opacity:0;
+  animation : fadeIn 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  //animation
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  
+}
+
+
+
+.formImage {
+  width: 40%;
+  text-align: center;
+  margin-right: 5%;
+  margin-left: 5%;
+  animation: fadeIn 4s;
+  animation-fill-mode: forwards;
+  height: auto; // Adjust as needed
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+}
+
+.formImage img {
+  max-width: 100%;
+  height: auto;
+}
+
+.title-text {
+  /* Add styles for title text */
+  word-wrap: break-word; /* Wrap text to prevent overflow */
+  text-align: center; /* Center-align text */
+  font-size: 2vmax;
+  font-weight: bold;
+  //background color
+  color: $basically-white;
+  background-color: $primary-color;
+  padding: 10px;
+  border-radius: 10px;
+  //move upwards
+  margin-top: 20px;
+  margin-bottom: 30px;
+  //animation so that background color is basically white to start then becomes primary color over 3 seconds
+  animation: fadeIn 2s;
+  animation-fill-mode: forwards;
+  //animation
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+    @include buttonHover;
+}
+
+.text-boxes {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px; // Adjust as needed for spacing between elements
+}
+
+.explanation-text,
+.input-text,
+.formButton {
+  margin-bottom: 20px; // Adjust as needed for spacing between elements
+}
+
+
+
+.typewriter-wrapper {
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+  animation: fadeIn 2s;
+  animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+  h1{
+    animation: type 3s 0.4s steps(30, end) forwards,
+    blink .66s step-end infinite;
+    font-family: $font-family;
+    font-weight: bold;
+    font-size: clamp(5pt, 1.5vw, 24pt);
+    position: relative;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    width: 0;
+    border-right: 1px solid $basically-black;
+  }
+}
+  
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: transparent
+  }
+  50% {
+    border-color: $basically-black
+  }
+}
+
+.explanation-text,.input-text,.formButton {
+  animation: fadeIn 4s;
+  animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+}
+
+.input-text input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  //rounded
+  border-radius: 10px;
+  
+  &:hover {
+    border: 3px solid $primary-color;
+  }
+  &:focus{
+    border: 4px solid $primary-color;
+    //shadow
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  }
+}
+
+.formButton{ 
+  //flex
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //justify row
+  flex-direction: row;
+  //space between items in flexbox
+  gap: 20px;
+
+  button {
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    //add padding
+    padding: 10px 20px;
+    //rounded
+    border-radius: 10px;
+    margin-top: 20px;
+    //size
+    width: 80px;
+    height: 40px;
+    //align center
+    margin: 0 auto;
+    display: block;
+    @include buttonHover;
+  }
+
+  a{
+    color: $primary-color;
+    text-decoration: none;
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+.results-container {
+  max-width: 85%; /* Adjusted for a wider layout */
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+}
+
+.results-title {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.top-matches, .highlight-section {
+  flex: 1; /* Each takes equal space */
+  margin: 0 10px; /* Spacing between the two sections */
+  padding: 20px;
+  border: 1px solid #ccc; /* Optional: adds a border around each section */
+  border-radius: 5px; /* Optional: rounds corners of the border */
+}
+
+.matches-list {
+  list-style: none;
+  padding: 0;
+}
+
+.match-item {
+  background-color: #f0f0f0;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.highlight-details p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+strong {
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .top-matches, .highlight-section {
+      margin: 10px 0; /* Adjusts spacing for vertical layout */
+      width: 100%; /* Makes each section full width */
+  }
+}
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;  // Make sure the container takes up the full width
+  box-sizing: border-box; // Ensures padding doesn't affect the width
+}
+
+.coordinate-plane-svg {
+  max-width: 100%; // Make sure the SVG scales responsively
+  width: auto; // Ensure the width adjusts based on the content
+  height: auto; // Ensure the height adjusts based on the content
+  display: block; // Makes sure the SVG is treated as a block element
+  margin: 0 auto; // Centers the SVG horizontally
+}
+
+.editButton{
+  button{
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    //add padding
+    padding: 10px 20px;
+    //rounded
+    border-radius: 10px;
+    margin-top: 20px;
+    //size
+    width: 80px;
+    height: 40px;
+    //align center
+    @include buttonHover;
+  }
+}
+
+.editWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20%;
+  animation: fadeIn 3s;
+  animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+  .question-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 40%;
+    
+  }
+  .question-title {
+    margin-right: 20px;
+    font-weight: bold;
+    //more styling
+    font-size: 20px;
+  }
+  .input-container {
+    display: flex;
+    position: fixed;
+    left: 270px;
+    margin-right:40%;
+    min-width: 100px;
+  }
+  .editInput1, .editInput2{
+    width: 100%;
+    padding: 4px;
+    box-sizing: border-box;
+    //rounded
+    border-radius: 10px;
+    &:hover {
+      border: 3px solid $primary-color;
+    }
+    &:focus{
+      border: 4px solid $primary-color;
+      //shadow
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    }
+  }
+  
+  .editInput2{
+    margin-left: 25px;
+  }
+  
+  
+  
+}
+.editButtonSubmit{
+    //flex space side by side
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    //center of page
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    //add padding
+    //rounded
+    border-radius: 10px;
+    //size
+    width: 80px;
+    height: 40px;
+    //align center
+    display: block;
+    //move button down
+    margin-top: 20px;
+    @include buttonHover;
+    animation: fadeIn 3s;
+    animation-fill-mode: forwards;
+    //animation
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .top-matches, .highlight-section {
+    margin: 10px 0; /* Adjusts spacing for vertical layout */
+    width: 100%; /* Makes each section full width */
+  }
+  .data-container{
+    visibility: hidden;
+  }
+}
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+// Footer
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+
+  p {
+    font-size: 14px;
+    margin: 0;
+  }
+}
