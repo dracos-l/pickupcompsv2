@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/pickupcompsv2/static/css/main.d06ab53f.css",
+    "main.js": "/pickupcompsv2/static/js/main.6bda6119.js",
+    "static/js/787.d4e30ad1.chunk.js": "/pickupcompsv2/static/js/787.d4e30ad1.chunk.js",
+    "static/media/Mid3.png": "/pickupcompsv2/static/media/Mid3.ee755c09a396d0a4f14c.png",
+    "static/media/abovethebreak.png": "/pickupcompsv2/static/media/abovethebreak.7ca6c336395c6d38c4c2.png",
+    "static/media/easter_egg.jpg": "/pickupcompsv2/static/media/easter_egg.e55f98e0367232f3c704.jpg",
+    "static/media/midrange.png": "/pickupcompsv2/static/media/midrange.7dfd6dbfe4b1bb4851b4.png",
+    "static/media/logo.png": "/pickupcompsv2/static/media/logo.007c5bc6929414c59f19.png",
+    "static/media/corners.png": "/pickupcompsv2/static/media/corners.2ef13f9e09d4a55476a1.png",
+    "static/media/nothing.png": "/pickupcompsv2/static/media/nothing.32defcc82a1b65593ffb.png",
+    "static/media/paint.png": "/pickupcompsv2/static/media/paint.4b30be4f0885c8af1948.png",
+    "static/media/nametag.png": "/pickupcompsv2/static/media/nametag.d046aee89e1e763ebf95.png",
+    "static/media/IMG_6006.png": "/pickupcompsv2/static/media/IMG_6006.e686e1808e5533ab7bab.png",
+    "index.html": "/pickupcompsv2/index.html",
+    "main.d06ab53f.css.map": "/pickupcompsv2/static/css/main.d06ab53f.css.map",
+    "main.6bda6119.js.map": "/pickupcompsv2/static/js/main.6bda6119.js.map",
+    "787.d4e30ad1.chunk.js.map": "/pickupcompsv2/static/js/787.d4e30ad1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d06ab53f.css",
+    "static/js/main.6bda6119.js"
+  ]
+}
