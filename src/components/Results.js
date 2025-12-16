@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { calculation, results, highlights } from '../calcuation/calculateSimilarity';
 import { questions } from './Questions'; // Import questions for data validation
@@ -239,6 +240,53 @@ function Results() {
         setSelectedPlayer(playerName);
     };
 
+    const { isAuthenticated } = useContext(AuthContext);
+
+    const handleSave = async () => {
+        try {
+            const res = await fetch('/api/user/attempt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': localStorage.getItem('token')
+                },
+                body: JSON.stringify({
+                    result: {
+                        topTen: topTenPlayers,
+                        highlight: highlightResult
+                    }
+                })
+            });
+            if (res.ok) {
+                alert('Result saved successfully!');
+            } else {
+                alert('Failed to save result.');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Error saving result.');
+        }
+    };
+
+    const handleShare = async () => {
+        const shareData = {
+            title: 'PickupComps Result',
+            text: `I matched with ${highlightResult.Name} on PickupComps! Check it out.`,
+            url: window.location.href
+        };
+
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(`I matched with ${highlightResult.Name} on PickupComps! Check it out at ${window.location.href}`);
+                alert('Result copied to clipboard!');
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     return (
         <div className={isVisible ? 'visible' : 'hidden'}>
             <div className="results-container">
@@ -346,7 +394,11 @@ function Results() {
                     </div>
                 </div>
                 <div className="editButton">
-                    <button onClick={handleEditClick}>Edit</button>
+                    <button onClick={handleEditClick} style={{ marginRight: '10px' }}>Edit</button>
+                    {isAuthenticated && (
+                        <button onClick={handleSave} style={{ marginRight: '10px', backgroundColor: '#28a745' }}>Save Result</button>
+                    )}
+                    <button onClick={handleShare} style={{ backgroundColor: '#17a2b8' }}>Share</button>
                 </div>
             </div>
         </div>
