@@ -2,13 +2,13 @@ import React from 'react';
 
 const EasterEgg = () => {
   return (
-    <div class="easter">
+    <div className="easter">
       <img
         src={require(`./images/easter_egg.jpg`)}
         alt="easter_egg"
-        class="easter_egg"
-        style={{width: '100%', height: '100%'}}
-      />   
+        className="easter_egg"
+        style={{ width: '100%', height: '100%' }}
+      />
     </div>
   );
 };

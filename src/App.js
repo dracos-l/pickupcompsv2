@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import Results from './components/Results'
 import React from 'react';
 import Edit from './components/Edit';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             element={
               <>
                 <Header />
-                <div class="content">
+                <div className="content">
                   <Intro />
                 </div>
                 <Footer />
@@ -35,7 +35,7 @@ function App() {
             element={
               <>
                 <Header />
-                <div class="content">
+                <div className="content">
                   <AboutProjContent />
                 </div>
                 <Footer />
@@ -47,7 +47,7 @@ function App() {
             element={
               <>
                 <Header />
-                <div class="content">
+                <div className="content">
                   <EasterEgg />
                 </div>
                 <Footer />
@@ -59,7 +59,7 @@ function App() {
             element={
               <>
                 <Header />
-                <div class="content">
+                <div className="content">
                   <Results />
                 </div>
                 <Footer />
@@ -71,7 +71,7 @@ function App() {
             element={
               <>
                 <Header />
-                <div class="content">
+                <div className="content">
                   <Edit />
                 </div>
                 <Footer />

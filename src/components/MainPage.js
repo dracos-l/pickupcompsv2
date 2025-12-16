@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate,useParams } from 'react-router-dom';
-import {questions} from './Questions';
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import { questions } from './Questions';
+
+
+
 
 const MainPage = () => {
   const { questionTitle } = useParams();
@@ -8,8 +11,8 @@ const MainPage = () => {
     questions.findIndex((question) => question.title === questionTitle)
   );
   const [formData, setFormData] = useState({
-    answer1: '',
-    answer2: '',
+    answer1: 5,
+    answer2: 5,
   });
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -20,132 +23,119 @@ const MainPage = () => {
 
   const [isVisible, setIsVisible] = useState(true);
 
-  // Updated to enforce input constraints
+  // Updated to enforce input constraints (1-10 range for sliders)
   const handleInputChange = (answerNumber, value) => {
     const numberValue = Number(value);
-    if (numberValue >= 0 && numberValue <= 100 && !isNaN(numberValue)) {
+    if (numberValue >= 1 && numberValue <= 10 && !isNaN(numberValue)) {
       setFormData((prevData) => ({
         ...prevData,
-        [`answer${answerNumber}`]: value,
+        [`answer${answerNumber}`]: numberValue,
       }));
     }
   };
 
-  // Added input validation before moving to the next question or finishing
-  const handleNextClick = () => {
-    // Check if both answers are valid
-    if (
-      formData.answer1 === '' ||
-      formData.answer2 === '' ||
-      isNaN(formData.answer1) ||
-      isNaN(formData.answer2) ||
-      formData.answer1 < 0 ||
-      formData.answer1 > 100 ||
-      formData.answer2 < 0 ||
-      formData.answer2 > 100
-    ) {
-      alert('Please fill both answers with numbers between 0 and 100.');
-      return;
+  // Sync state with URL parameter (questionTitle)
+  useEffect(() => {
+    const newIndex = questions.findIndex((q) => q.title === questionTitle);
+    if (newIndex !== -1) {
+      setCurrentQuestionIndex(newIndex);
+      setFormData({ answer1: 5, answer2: 5 });
+      setIsVisible(true);
     }
+  }, [questionTitle]);
 
-    setIsVisible(false);
-    
-    // Note: Convert answer values to 0-1 scale here before saving
-    const scaledAnswers = {
-      answer1: formData.answer1 / 100,
-      answer2: formData.answer2 / 100,
-    };
-
-    // Save current question's answers to local storage
+  const handleNextClick = () => {
+    // Save current question's answers to local storage (raw 1-10 values)
     const existingAnswers = JSON.parse(localStorage.getItem('formData')) || {};
     const updatedAnswers = {
       ...existingAnswers,
-      [currentQuestion.id]: scaledAnswers,
+      [currentQuestion.id]: formData,
     };
     localStorage.setItem('formData', JSON.stringify(updatedAnswers));
-    
-    // Reset formData for the next question
-    setFormData({ answer1: '', answer2: '' });
-  
-    if (isLastQuestion) {
-      setTimeout (() => {
-        navigate('/Results');
-      }, 500);
+
+    if (currentQuestionIndex === questions.length - 1) {
+      navigate('/Results', { state: formData });
     } else {
-      setTimeout(() => {
-        navigate(`/Form/${questions[currentQuestionIndex + 1].title}`);
-        window.location.reload();
-      }, 500);
+      navigate(`/Form/${questions[currentQuestionIndex + 1].title}`, { state: formData });
     }
-  };  
+  };
 
   const handleBackClick = () => {
     setIsVisible(false);
-    setTimeout(() => {
-      setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
-    }, 500);
-    
-    setFormData({
-      answer1: '',
-      answer2: '',
-    });
 
     setTimeout(() => {
-      navigate(`/Form/${questions[currentQuestionIndex - 1].title}`);
-      window.location.reload();
+      if (currentQuestionIndex > 0) {
+        navigate(`/Form/${questions[currentQuestionIndex - 1].title}`);
+      }
     }, 500);
   };
 
-  
+
   return (
     <div className={isVisible ? 'visible' : 'hidden'}>
-    <div className="formContainer">
-      <div className="formImage">
-        <img src={require(`${currentQuestion.imageSrc}`)} alt={`Question ${currentQuestion.id}`} />
+      <div className="formContainer">
+        <div className="formImage">
+          <img src={require(`${currentQuestion.imageSrc}`)} alt={`Question ${currentQuestion.id}`} />
+        </div>
+
+        <div className="text-boxes">
+          <Link to={currentQuestion.titleLink} style={{ textDecoration: 'none' }} target="_blank" rel="noopener noreferrer">
+            <div className="title-text">{currentQuestion.title}</div>
+          </Link>
+
+          <div className="typewriter-wrapper">
+            <h1 className="typewriter-text line-1">{currentQuestion.questionText}</h1>
+          </div>
+
+          <div className="explanation-text">{currentQuestion.explanationText}</div>
+
+          {/* Answer Box 1 */}
+          <div className="input-range-wrapper">
+            <div className="range-labels">
+              <span>1 (Worst)</span>
+              <span>10 (Best)</span>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="10"
+              step="1"
+              value={formData.answer1 || 5}
+              onChange={(e) => handleInputChange(1, e.target.value)}
+              className="slider"
+            />
+            <div className="slider-value">Value: {formData.answer1 || 5}</div>
+          </div>
+
+          {/* Answer Box 2 */}
+          <div className="input-range-wrapper">
+            <div className="range-labels">
+              <span>1 (Worst)</span>
+              <span>10 (Best)</span>
+            </div>
+            <input
+              type="range"
+              min="1"
+              max="10"
+              step="1"
+              value={formData.answer2 || 5}
+              onChange={(e) => handleInputChange(2, e.target.value)}
+              className="slider"
+            />
+            <div className="slider-value">Value: {formData.answer2 || 5}</div>
+          </div>
+
+          <div className="formButton">
+            {!isFirstQuestion && <button onClick={handleBackClick}>Prev</button>}
+
+            {isLastQuestion ? (
+              <button onClick={handleNextClick}>Finish</button>
+            ) : (
+              <button onClick={handleNextClick}>Next</button>
+            )}
+          </div>
+        </div>
       </div>
-
-      <div className="text-boxes">
-        <Link to={currentQuestion.titleLink} style={{ textDecoration: 'none' }} target="_blank">
-          <div className="title-text">{currentQuestion.title}</div>
-        </Link>
-
-        <div class="typewriter-wrapper">
-          <h1 class="typewriter-text line-1">{currentQuestion.questionText}</h1>
-        </div>
-
-        <div className="explanation-text">{currentQuestion.explanationText}</div>
-
-        {/* Answer Box 1 */}
-        <div className="input-text">
-          <input
-            type="text"
-            value={formData.answer1}
-            onChange={(e) => handleInputChange(1, e.target.value)}
-            placeholder={currentQuestion.placeHolderText1}
-          />
-        </div>
-
-        {/* Answer Box 2 */}
-        <div className="input-text">
-          <input
-            type="text"
-            value={formData.answer2}
-            onChange={(e) => handleInputChange(2, e.target.value)}
-            placeholder={currentQuestion.placeHolderText2}
-          />
-        </div>
-
-        <div className="formButton">
-          {!isFirstQuestion && <button onClick={handleBackClick}>Prev</button>}
-
-          {isLastQuestion ? (
-            <button onClick={handleNextClick}>Finish</button>
-          ) : (
-            <button onClick={handleNextClick}>Next</button>
-          )}
-        </div>
-      </div>
-    </div>
     </div>
   );
 };
