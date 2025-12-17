@@ -53,11 +53,15 @@ const MainPage = () => {
     };
     localStorage.setItem('formData', JSON.stringify(updatedAnswers));
 
-    if (currentQuestionIndex === questions.length - 1) {
-      navigate('/Results', { state: formData });
-    } else {
-      navigate(`/Form/${questions[currentQuestionIndex + 1].title}`, { state: formData });
-    }
+    setIsVisible(false);
+
+    setTimeout(() => {
+      if (currentQuestionIndex === questions.length - 1) {
+        navigate('/Results', { state: formData });
+      } else {
+        navigate(`/Form/${questions[currentQuestionIndex + 1].title}`, { state: formData });
+      }
+    }, 500);
   };
 
   const handleBackClick = () => {
