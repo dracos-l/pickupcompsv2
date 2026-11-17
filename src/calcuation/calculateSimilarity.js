@@ -1,14 +1,19 @@
 import { csvParse } from 'd3';
 
-async function loadAndParseCSV(filePath) {
+const seasonFiles = require.context('./', false, /^\.\/20\d{2}-\d{2}\.csv$/);
+const seasons = seasonFiles.keys().map(key => key.slice(2, -4)).sort().reverse();
+
+async function loadAndParseCSV(season) {
+    const asset = seasonFiles(`./${season}.csv`);
+    const filePath = asset.default || asset;
     const response = await fetch(filePath);
+    if (!response.ok) throw new Error(`Could not load ${season} data.`);
     const data = await response.text();
-
-    // Check the raw output after parsing
-    console.log(csvParse(data));
-
-    return csvParse(data, function(player) {
+    const parsed = csvParse(data, function(player) {
+        if (!player.id || !player.full_name) throw new Error(`Invalid player data for ${season}.`);
         return {
+            id: player.id,
+            season,
             full_name: player.full_name.trim(),
             Paint_volume_pm_percentile: parseFloat(player.Paint_volume_pm_percentile),
             Paint_efficiency_percentile: parseFloat(player.Paint_efficiency_percentile),
@@ -36,6 +41,8 @@ async function loadAndParseCSV(filePath) {
             DREB_PCT_percentile: parseFloat(player.DREB_PCT_percentile),
         };
     });
+    if (!parsed.length) throw new Error(`No player data found for ${season}.`);
+    return parsed;
 }
 
 function transformFormData(formData) {
@@ -68,11 +75,11 @@ function transformFormData(formData) {
     return personDict;
 }
 
-async function calculation(formData) {
+async function calculation(formData, selectedSeason = '2025-26') {
     let personDict = transformFormData(formData);
     let similarityDic = {};
-    const playersDf = await loadAndParseCSV('/V4_player_data.csv');
-    console.log(playersDf);
+    const selectedSeasons = selectedSeason === 'all' ? seasons : [selectedSeason];
+    const playersDf = (await Promise.all(selectedSeasons.map(loadAndParseCSV))).flat();
     if (playersDf) {
         playersDf.forEach(playerDf => {
             // Calculate similarity as before using the player data
@@ -107,6 +114,9 @@ async function calculation(formData) {
             let Defense = ((Paint * 8) + (Perimeter * 8) + (Dreb * 3)) / 19;
 
             let playerStats = {
+                playerId: playerDf.id,
+                season: playerDf.season,
+                name: playerDf.full_name,
                 'Similarity Score': (Offense + Defense) / 2,
                 'Scoring': Scoring,
                 'Playmaking': Playmaking,
@@ -118,7 +128,7 @@ async function calculation(formData) {
                 'Defense': Defense
             };
 
-            similarityDic[playerDf['full_name']] = playerStats;
+            similarityDic[`${playerDf.id}:${playerDf.season}`] = playerStats;
         });
     } else {
         console.error("Players dataframe is not loaded.");
@@ -128,17 +138,13 @@ async function calculation(formData) {
 }
 
 function results(similarityDic) {
-    let dic = {};
     let similarity10 = Object.entries(similarityDic)
                              .sort((a, b) => a[1]['Similarity Score'] - b[1]['Similarity Score'])
                              .slice(0, 10);
-    similarity10.forEach((item, index) => {
-        // Use player's name and adjust the similarity score
-        // console.log(item[0], item[1]['Similarity Score']);
-        let adjustedScore = (1 - item[1]['Similarity Score']) * 100;
-        dic[item[0]] = adjustedScore.toFixed(2); // Round to two decimal places
-    });
-    return dic;
+    return similarity10.map(([key, player]) => ({
+        key, playerId: player.playerId, season: player.season, name: player.name,
+        score: ((1 - player['Similarity Score']) * 100).toFixed(2)
+    }));
 }
 
 function highlights(similarityDic) {
@@ -146,7 +152,9 @@ function highlights(similarityDic) {
     let similarity1 = Object.entries(similarityDic)
                             .sort((a, b) => a[1]['Similarity Score'] - b[1]['Similarity Score'])[0];
     // Apply the transformation to Offense_value and Defense_value with rounding
-    dic['Name'] = similarity1[0];
+    dic['Name'] = similarity1[1].name;
+    dic['PlayerId'] = similarity1[1].playerId;
+    dic['Season'] = similarity1[1].season;
     dic['Offense_value'] = ((1 - similarity1[1]['Offense']) * 100).toFixed(2);
     dic['Defense_value'] = ((1 - similarity1[1]['Defense']) * 100).toFixed(2);
 
@@ -155,7 +163,7 @@ function highlights(similarityDic) {
     const baseStats = ['Similarity Score','Scoring', 'Playmaking', 'Offensive Rebounding', 'Paint Defense', 'Perimeter Defense', 'Defensive Rebounding'];
 
     // Constructing the exclusion list, including 'Offense', 'Defense', and all *_rank keys
-    const exclusionList = ['Offense', 'Defense', ...baseStats.map(stat => `${stat}_rank`), 'Offense_rank', 'Defense_rank'];
+    const exclusionList = ['name', 'playerId', 'season', 'Offense', 'Defense', ...baseStats.map(stat => `${stat}_rank`), 'Offense_rank', 'Defense_rank'];
 
     // Filter out the keys you want to exclude
     const filteredKeys = Object.keys(similarity1[1]).filter(key => !exclusionList.includes(key));
@@ -236,4 +244,4 @@ function getOrdinalSuffix(i) {
     return "th";
 }
 
-export {calculation, results, highlights};
+export {calculation, results, highlights, seasons};
